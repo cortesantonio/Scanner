@@ -1,5 +1,130 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ScannerCC.Models.Usuario
+
+
 @{
+    var paisesConRecuento = ViewBag.PaisesConRecuento as List<Paises>;
 }
+
+
+
+<h1>@Model.Nombre</h1>
+<a asp-controller="Auth" style="color:red;" asp-action="LogOut" class="dropdown-item">Cerrar Sesion</a>
+<a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuarios</a>
+<a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="Index">Productos</a>
+
+
+<div class="container">
+
+
+
+    <main role="main"  class="pb-3 row">
+
+
+
+        <div class="card col-sm" style="width: 18rem; text-align:center">
+            <h2>
+                @ViewBag.countUsuarios
+            </h2>
+            <p>Numero de Usuarios Registrados</p>
+        </div>
+
+        <div class="card col-sm" style="width: 18rem; text-align:center">
+            <h2>
+                @ViewBag.countUsuariosEspecialista
+            </h2>
+            <p>Numero de Especialistas Registrados</p>
+        </div>
+        <div class="card col-sm" style="width: 18rem; text-align:center">
+            <h2>
+                @ViewBag.countUsuariosAdministrador
+            </h2>
+            <p>Numero de Administrador Registrados</p>
+        </div>
+        <div class="card col-sm" style="width: 18rem; text-align:center">
+            <h2>
+                @ViewBag.countProductos</h2>
+            <p>Numero de Productos</p>
+        </div>
+        <div class="card col-sm" style="width: 18rem; text-align:center">
+            <h2>
+                @ViewBag.countEscaneos
+            </h2>
+            <p>Numero de Escaneos(Totales)</p>
+        </div>
+        <div class="card col-sm" style="width: 18rem; text-align:center">
+            <h2>
+                @ViewBag.countEscaneosMes
+            </h2>
+            <p>Numero de Escaneos(Mes Actual)</p>
+        </div
+       
+
+
+        <div class="row">
+    
+</div>
+<div class="row">
+    <div class="col">
+        <h1>Paises y Recuento</h1>
+    </div>
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Pais</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in paisesConRecuento)
+                {
+                    <tr>
+                        <td>@item.PaisDestino</td>
+                        <td>@item.Cantidad</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+     <main role="main" 
+         <div style="width: 500px">
+	<canvas id="grafica"></canvas>
+</div>
+     </main>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+<script type="text/javascript">
+const labels = ['Blanco', 'Tinto', 'Rose']
+const colors = ['rgb(69,177,223)', 'rgb(99,201,122)', 'rgb(203,82,82)'];
+
+const graph = document.querySelector("#grafica");
+
+const data = {
+    labels: labels,
+    datasets: [{
+        data: [@ViewBag.countBlanco, @ViewBag.countTinto, @ViewBag.countRose],
+        backgroundColor: colors
+    }]
+};
+
+const config = {
+    type: 'pie',
+    data: data,
+};
+
+new Chart(graph, config);
+</script>

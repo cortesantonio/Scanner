@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ScannerCC.Models;
 using System.Security.Claims;
 using System.Security.Cryptography;
+
+using ScannerCC.Models;
+
 
 namespace ScannerCC.Controllers
 {
@@ -75,7 +77,7 @@ namespace ScannerCC.Controllers
                 {
                     //Usuario correcto pero contraseña mala
                     ModelState.AddModelError("", "Contraseña Incorrecta");
-                    return RedirectToAction("LoginIn");
+                    return RedirectToAction("Index", "Home");
                 }
 
 
@@ -84,12 +86,17 @@ namespace ScannerCC.Controllers
             {
                 //Usuario No Existe
                 ModelState.AddModelError("", "Usuario no Encontrado!");
-                return RedirectToAction("LoginIn");
+                return RedirectToAction("Index", "Home");
 
             }
 
 
 
+        }
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
 
 

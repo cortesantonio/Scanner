@@ -14,6 +14,7 @@ namespace ScannerCC.Controllers
         {
             _context = context;
         }
+
         public IActionResult Index()
         {
             var rol = _context.Rol.ToList().Count;
@@ -27,6 +28,25 @@ namespace ScannerCC.Controllers
                     _context.SaveChanges();
 
                 }
+            }
+
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var trab = _context.Usuario.Include(r => r.Rol).Where(t => t.Rut.Equals(User.Identity.Name)).FirstOrDefault();
+                
+                if (trab != null && trab.Rol.Nombre == "Especialista")
+                {
+                    return RedirectToAction("Index", "Especialista");
+                }
+                if (trab != null && trab.Rol.Nombre == "Administrador")
+                {
+                    return RedirectToAction("Index", "Administrador");
+
+                }
+            }
+            else
+            {
                 return View();
 
             }

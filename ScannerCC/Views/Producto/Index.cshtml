@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ScannerCC.Models.Producto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <form action="" method="get">
+
+        <input type="text" placeholder="codigo o nombre" name="Busqueda" id="">
+            
+        <button type="submit">Buscar</button>
+    </form>
+</p>
+<p>
+    <a asp-action="Create">Create New</a>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoBarra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cepa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaisOrigen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaisDestino)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCosecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaProduccion)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoBarra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cepa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaisOrigen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaisDestino)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCosecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaProduccion)
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.idProducto">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.idProducto">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.idProducto">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

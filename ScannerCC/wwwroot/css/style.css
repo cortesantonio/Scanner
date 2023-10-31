@@ -1,0 +1,83 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.body-login {
+  background-color: rgb(84, 161, 212);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background-color: white;
+  width: 25vw;
+  height: 60vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.288) 10px 10px 20px;
+}
+.logo img {
+  width: 150px;
+  height: 150px;
+}
+.titulo h1 {
+  font-size: 2.5rem;
+}
+.titulo p {
+  font-size: .9rem;
+  color: gray;
+}
+.info {
+  margin-bottom: 30px;
+}
+.login form {
+  margin-bottom: 40px;
+}
+.login form div {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 70%;
+  height: 40px;
+  margin: auto;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+}
+.login form div label {
+  font-size: 24px;
+  margin-right: 15px;
+}
+.login form div input {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.login form div input:focus {
+  outline: none;
+}
+.login form button {
+  border-radius: 10px;
+  width: 70%;
+  height: 35px;
+  border: none;
+  background-color: rgb(84, 161, 212);
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.login p{
+  margin: auto;
+  width: 70%;
+  font-size: .9rem;
+  color: gray;
+}

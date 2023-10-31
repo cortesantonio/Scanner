@@ -21,6 +21,9 @@ namespace ScannerCC.Controllers
         {
             DateTime fechaHoy = DateTime.Now;
             DateTime fechaMesAnterior = fechaHoy.AddMonths(-1);
+            DateTime fechaHaceUnAnio = fechaHoy.AddYears(-1);
+            DateTime fechaHaceDosAnio = fechaHoy.AddYears(-2);
+
 
             if (User.Identity.IsAuthenticated)
             {
@@ -53,6 +56,21 @@ namespace ScannerCC.Controllers
                     .Where(e => e.Fecha >= fechaMesAnterior && e.Fecha <= fechaHoy)
                     .ToList().Count;
 
+                ViewBag.produccionUnAnio = _context.Producto
+                .Where(e => (e.FechaProduccion ?? DateTime.MinValue) >= fechaHaceUnAnio && (e.FechaProduccion ?? DateTime.MinValue) <= fechaHoy)
+                .ToList().Count;
+                if (ViewBag.produccionUnAnio == null)
+                {
+                    ViewBag.produccionUnAnio = 0;
+                }
+
+                ViewBag.produccionDosAnio = _context.Producto
+                .Where(e => e.FechaProduccion >= fechaHaceDosAnio && e.FechaProduccion <= fechaHaceUnAnio)
+                .ToList().Count;
+                if (ViewBag.produccionDosAnio == null)
+                {
+                    ViewBag.produccionDosAnio = 0;
+                }
 
                 return View(trab);
             }

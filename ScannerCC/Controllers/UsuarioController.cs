@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -18,15 +19,9 @@ namespace ScannerCC.Controllers
             _context = context;
         }
 
-        // GET: Usuarios
-        public async Task<IActionResult> Index()
-        {
-              return _context.Usuario != null ? 
-                          View(await _context.Usuario.Include(r=>r.Rol).ToListAsync()) :
-                          Problem("Entity set 'AppDbContext.Usuario'  is null.");
-        }
 
         // GET: Usuarios/Details/5
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Usuario == null)
@@ -45,6 +40,7 @@ namespace ScannerCC.Controllers
         }
 
         // GET: Usuarios/Create
+        [Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
             return View();
@@ -53,9 +49,10 @@ namespace ScannerCC.Controllers
         // POST: Usuarios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        
+
 
         // GET: Usuarios/Edit/5
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Usuario == null)
@@ -71,9 +68,10 @@ namespace ScannerCC.Controllers
             return View(usuario);
         }
 
-       
+
 
         // GET: Usuarios/Delete/5
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Usuario == null)
@@ -92,6 +90,7 @@ namespace ScannerCC.Controllers
         }
 
         // POST: Usuarios/Delete/5
+        [Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -18,38 +19,7 @@ namespace ScannerCC.Controllers
             _context = context;
         }
 
-        // GET: Productoes
-        public async Task<IActionResult> Index(string Busqueda)
-        {
-            if (Busqueda == null)
-            {
-                return _context.Producto != null ?
-                View(await _context.Producto.ToListAsync()) :
-                Problem("Entity set 'AppDbContext.Producto'  is null.");
-            }
-            else
-            {
-
-                var esNumero = int.TryParse(Busqueda, out int parsedInt);
-                if (esNumero)
-                {
-                    // Si es una entero, realiza la búsqueda por Codigo.
-
-                    var Resultado = await _context.Producto.Where(x => x.CodigoBarra == parsedInt).ToListAsync();
-                    return View(Resultado);
-
-                }
-                else
-                {
-                    // Si es una cadena, realiza la búsqueda por Nombre.
-                    var Resultado = await _context.Producto.Where(x => x.Nombre.Contains(Busqueda)).ToListAsync();
-                    return View(Resultado);
-
-                }
-
-            }
-
-        }
+        
         // GET: Productoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -69,6 +39,7 @@ namespace ScannerCC.Controllers
         }
 
         // GET: Productoes/Create
+        [Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
             return View();
@@ -77,6 +48,7 @@ namespace ScannerCC.Controllers
         // POST: Productoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
@@ -112,7 +84,9 @@ namespace ScannerCC.Controllers
 
         // POST: Productoes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
+
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("idProducto,CodigoBarra,Nombre,Cepa,PaisOrigen,PaisDestino,FechaCosecha,FechaProduccion,Capacidad,GradoAlcohol,Azucar,Sulfuroso,Densidad,TipoCapsula,TipoEtiqueta,ColorBotella,Medalla,ColorCapsula,TipoCorcho,TipoBotella,AlturaBotella,AnchoBotella,MedidadEtiquetaABoquete,MedidaEtiquetaABase")] Producto producto)
@@ -146,6 +120,7 @@ namespace ScannerCC.Controllers
         }
 
         // GET: Productoes/Delete/5
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Producto == null)
@@ -163,6 +138,7 @@ namespace ScannerCC.Controllers
             return View(producto);
         }
 
+        [Authorize(Roles = "Administrador")]
         // POST: Productoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

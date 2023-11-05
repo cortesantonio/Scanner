@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 
 namespace ScannerCC.Models
 {
@@ -30,7 +31,5 @@ namespace ScannerCC.Models
         public float AnchoBotella { get; set; }
         public float MedidadEtiquetaABoquete { get; set; }
         public float MedidaEtiquetaABase { get; set; }
-
-
     }
 }

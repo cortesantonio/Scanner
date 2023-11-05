@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\ScannerCC.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
       "Id": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -17,8 +21,16 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\img\\Brand initial Simple Logo.png",
+      "PackagePath": "staticwebassets\\img\\Brand initial Simple Logo.png"
+    },
+    {
       "Id": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\img\\logo-cc.jpg",
       "PackagePath": "staticwebassets\\img\\logo-cc.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\js\\admin.js",
+      "PackagePath": "staticwebassets\\js\\admin.js"
     },
     {
       "Id": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\js\\site.js",

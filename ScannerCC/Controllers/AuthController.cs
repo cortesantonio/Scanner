@@ -177,7 +177,6 @@ namespace ScannerCC.Controllers
 
         public void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
-            //administrador 123456
             using (var hmac = new HMACSHA512())
             {
                 passwordSalt = hmac.Key;

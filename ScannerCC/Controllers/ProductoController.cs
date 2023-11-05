@@ -79,7 +79,10 @@ namespace ScannerCC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idProducto,CodigoBarra,Nombre,Cepa,PaisOrigen,PaisDestino,FechaCosecha,FechaProduccion,Capacidad,GradoAlcohol,Azucar,Sulfuroso,Densidad,TipoCapsula,TipoEtiqueta,ColorBotella,Medalla,ColorCapsula,TipoCorcho,TipoBotella,AlturaBotella,AnchoBotella,MedidadEtiquetaABoquete,MedidaEtiquetaABase")] Producto producto)
+        public async Task<IActionResult> Create(
+    [Bind("idProducto,CodigoBarra,Nombre,Cepa,PaisOrigen,PaisDestino,FechaCosecha,FechaProduccion,Capacidad," +
+    "GradoAlcohol,Azucar,Sulfuroso,Densidad,TipoCapsula,TipoEtiqueta,ColorBotella,Medalla,ColorCapsula,TipoCorcho," +
+    "TipoBotella,AlturaBotella,AnchoBotella,MedidadEtiquetaABoquete,MedidaEtiquetaABase")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -89,6 +92,7 @@ namespace ScannerCC.Controllers
             }
             return View(producto);
         }
+
 
         // GET: Productoes/Edit/5
         public async Task<IActionResult> Edit(int? id)

@@ -17,7 +17,7 @@ namespace ScannerCC.Controllers
             _context = context;
         }
         // GET: AdministradorController
-        public ActionResult Index()
+        public ActionResult Index(string Busqueda)
         {
             DateTime fechaHoy = DateTime.Now;
             DateTime fechaMesAnterior = fechaHoy.AddMonths(-1);
@@ -27,8 +27,8 @@ namespace ScannerCC.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                var trab = _context.Usuario.Where(t => t.Rut.Equals(User.Identity.Name)).FirstOrDefault();
-
+                ViewBag.trab = _context.Usuario.Where(t => t.Rut.Equals(User.Identity.Name)).FirstOrDefault();
+                
                 ViewBag.countUsuariosEspecialista = _context.Usuario
                     .Include(x => x.Rol)
                     .Where(r => r.Rol.Nombre == "Especialista").ToList().Count;
@@ -45,9 +45,6 @@ namespace ScannerCC.Controllers
                .GroupBy(p => p.PaisDestino)
                .Select(g => new Paises { PaisDestino = g.Key, Cantidad = g.Count() })
                .ToList();
-
-
-
 
                 ViewBag.countProductos = _context.Producto.ToList().Count;
                 ViewBag.countUsuarios = _context.Usuario.ToList().Count;
@@ -72,7 +69,30 @@ namespace ScannerCC.Controllers
                     ViewBag.produccionDosAnio = 0;
                 }
 
-                return View(trab);
+                ViewBag.Usuarios= _context.Usuario.Include(r => r.Rol).ToList();
+                ViewBag.Productos = _context.Producto.ToList();
+
+                //Si se realiza busqueda de productos evalua y filtra datos
+                if(Busqueda != null)
+                {
+                    var esNumero = int.TryParse(Busqueda, out int parsedInt);
+                    if (esNumero)
+                    {
+                        // Si es una entero, realiza la búsqueda por Codigo.
+
+                        ViewBag.Productos = _context.Producto.Where(x => x.CodigoBarra == parsedInt).ToList();
+                       
+
+                    }
+                    else
+                    {
+                        // Si es una cadena, realiza la búsqueda por Nombre.
+                        ViewBag.Productos = _context.Producto.Where(x => x.Nombre.Contains(Busqueda)).ToList();
+
+                    }
+
+                }
+                return View();
             }
             else { return RedirectToAction("Index", "Home"); }
         }

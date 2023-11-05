@@ -1,163 +1,472 @@
-﻿@model ScannerCC.Models.Usuario
-
 
 @{
     var paisesConRecuento = ViewBag.PaisesConRecuento as List<Paises>;
+    Layout = null;
 }
 
 
-
-<h1>@Model.Nombre</h1>
-<a asp-controller="Auth" style="color:red;" asp-action="LogOut" class="dropdown-item">Cerrar Sesion</a>
-<a class="nav-link text-dark" style="color:blue!important;"asp-area="" asp-controller="Usuario" asp-action="Index">Usuarios</a>
-<a class="nav-link text-dark"style="color:blue!important; " asp-area="" asp-controller="Producto" asp-action="Index">Productos</a>
-
-
-<div class="container">
-
-
-
-    <main role="main"  class="pb-3 row">
-
-
-
-        <div class="card col-sm" style="width: 18rem; text-align:center">
-            <h2>
-                @ViewBag.countUsuarios
-            </h2>
-            <p>Numero de Usuarios Registrados</p>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="menu">
+        <div class="logo">
+          <img src="img/Brand initial Simple Logo.png" alt="LOGO" />
         </div>
+        <div class="line"></div>
+        <div class="links">
+          <ul>
+            <li>
+              <button onclick="switchView('dashboard')" id="btnView">
+                <i class="fa-solid fa-chart-line"></i> Dashboard
+              </button>
+            </li>
+            <li>
+              <button onclick="switchView('usuarios')" id="btnView">
+                <i class="fa-regular fa-user"></i>Adm. de usuarios
+              </button>
+            </li>
+            <li>
+              <button onclick="switchView('productos')" id="btnView">
+                <i class="fa-solid fa-bag-shopping"></i> Adm. de productos
+              </button>
+            </li>
+            <li>
+              <button onclick="switchView('busqueda')" id="btnView">
+                <i class="fa-solid fa-barcode"></i> Buscador/Scanner
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="line"></div>
+      </aside>
+      <div class="main">
+        <nav class="navbar">
+          <div class="div1">
+            <i class="fa-solid fa-magnifying-glass" style="color: #bbbbbb"></i>
+            <input
+              type="text"
+              placeholder="Busqueda de Herramientas"
+              name=""
+              id=""
+            />
+          </div>
+          <div class="div2">
+            
+            <div class="user">
+              <h3>@ViewBag.trab.Nombre</h3>
+              <p>Administrador</p>
+            </div>
+                    <button id="showOptionUser" onclick="showOptionUser()">
+              <i class="fa-solid fa-caret-down"></i>
+            </button>
+            <div id="opcionesUser" style="display: none">
+              <ul>
+                <li>Editar Informacion</li>
+                <li><a asp-controller="Auth" style="color:red;" asp-action="LogOut" class="dropdown-item">Cerrar Sesion</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
 
-        <div class="card col-sm" style="width: 18rem; text-align:center">
-            <h2>
-                @ViewBag.countUsuariosEspecialista
-            </h2>
-            <p>Numero de Especialistas Registrados</p>
-        </div>
-        <div class="card col-sm" style="width: 18rem; text-align:center">
-            <h2>
-                @ViewBag.countUsuariosAdministrador
-            </h2>
-            <p>Numero de Administrador Registrados</p>
-        </div>
-        <div class="card col-sm" style="width: 18rem; text-align:center">
-            <h2>
-                @ViewBag.countProductos</h2>
-            <p>Numero de Productos</p>
-        </div>
-        <div class="card col-sm" style="width: 18rem; text-align:center">
-            <h2>
-                @ViewBag.countEscaneos
-            </h2>
-            <p>Numero de Escaneos(Totales)</p>
-        </div>
-        <div class="card col-sm" style="width: 18rem; text-align:center">
-            <h2>
-                @ViewBag.countEscaneosMes
-            </h2>
-            <p>Numero de Escaneos(Mes Actual)</p>
-        </div
-       
+        <div class="view" style="display:none" id="dashboard">
+          <header>
+            <h1>Dashboard</h1>
+            <p>Aqui encuentras informacion relevante.</p>
+          </header>
+          <main class="dashboard-container parent">
+            <div class="div1">
+              <h3>                @ViewBag.countUsuarios</h3>
+              <p>Numero de Usuario Registrados</p>
+            </div>
+            <div class="div2">
+              <h3>@ViewBag.countUsuariosEspecialista</h3>
+              <p>Numero de Especialista Registrados</p>
+            </div>
+            <div class="div3">
+              <h3>@ViewBag.countUsuariosAdministrador</h3>
+              <p>Numero de Adminstradores Registrados</p>
+            </div>
+            <div class="div4">
+              <h3>@ViewBag.countProductos</h3>
+              <p>Numero de Productos</p>
+            </div>
+            <div class="div5">
+              <h3>@ViewBag.countEscaneos</h3>
+              <p>Numero de Escaneos(Totales)</p>
+            </div>
+            <div class="div6">
+              <h3>@ViewBag.countEscaneosMes</h3>
+              <p>Numero de Escaneos(Mes)</p>
+            </div>
+            <div class="div7">
+              <div class="card col-sm" style="width: 500px">
+                <canvas id="graficaproduccion"></canvas>
+              </div>
+            </div>
 
-
-        <div class="row">
-    
-</div>
-<div class="row">
-    <div class="col">
-        <h1>Paises y Recuento</h1>
-    </div>
-    <div class="col">
-        <table class="table">
-            <thead>
-                <tr>
+            <div class="div8 flex">
+              <div>
+                <h3>Producto-Paises Destino</h3>
+              </div>
+              <div>
+                <table class="tablaPaises">
+                  <tr>
                     <th>Pais</th>
+                    @foreach (var item in paisesConRecuento)
+                    {
+                      <td>@item.PaisDestino</td>
+                    }
+                  </tr>
+                  <tr>
                     <th>Cantidad</th>
+                    @foreach (var item in paisesConRecuento)
+                    {
+                      <td>@item.Cantidad</td>
+                    }
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="div9">
+              <h3>Actividad Reciente *</h3>
+              <table>
+                <tr>
+                  <th>Usuario</th>
+                  <th>Rol</th>
+                  <th>Hora</th>
+                  <th>Producto</th>
+                  <th>Operacion</th>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in paisesConRecuento)
-                {
-                    <tr>
-                        <td>@item.PaisDestino</td>
-                        <td>@item.Cantidad</td>
-                    </tr>
+                <tr>
+                  <td>Antonio</td>
+                  <td class="Adminstrador">Adminstrador</td>
+                  <td>17:03</td>
+                  <td>Vino Blanco</td>
+                  <td>Scaneo</td>
+                </tr>
+                <tr>
+                  <td>Antonio</td>
+                  <td class="Especialista">Especialista</td>
+                  <td>17:00</td>
+                  <td>Vino Tinto</td>
+                  <td>Busqueda</td>
+                </tr>
+              </table>
+            </div>
+            <div class="div10" style="position: relative">
+              <div class="card col-sm" style="width: 70%">
+                <canvas id="grafica"></canvas>
+              </div>
+              <p style="position: absolute; top: 20px">Tipos de etiquetas</p>
+            </div>
+          </main>
+        </div>
+
+        <div class="view" id="usuarios" style="display: none">
+          <header>
+            <h1>Adm. de Usuarios</h1>
+            <p>
+              Aqui puedes adminstrar los usuario. Ver, crear, editar y borrar
+              usuarios como estimes necesario.
+            </p>
+          </header>
+
+          <main class="usuario-container">
+            <table class="tableUsuarios">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Rut</th>
+                  <th>Email</th>
+                  <th>Rol</th>
+
+                  <th> <a asp-action="Create" style="color:white;text-decoration:none;" asp-controller="Usuario"><i class="fa-solid fa-user-plus" style="color: #ffffff;"></i> Nuevo Usuario</a> </th>
+                </tr>
+              </thead>
+              <tbody>
+                            @foreach (var item in ViewBag.Usuarios)
+                            {
+
+                <tr>
+                  <td>@item.Nombre</td>
+                  <td>@item.Rut</td>
+                  <td>@item.Email</td>
+                  <td>@item.Rol.Nombre</td>
+                  
+                  <td>
+                                        <a asp-action="Edit" asp-controller="Usuario" asp-route-id="@item.idUsuario"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
+                    |
+                                        <a asp-action="Details" asp-controller="Usuario" asp-route-id="@item.idUsuario"><i class="fa-solid fa-circle-info" style="color: #ffffff;"></i></a>
+                    |
+                                        <a asp-action="Delete" asp-controller="Usuario" asp-route-id="@item.idUsuario"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
+                  </td>
+                </tr>
                 }
-            </tbody>
-        </table>
+              </tbody>
+            </table>
+          </main>
+        </div>
+
+        <div class="view" id="productos" style="display: none">
+          <header>
+            <h1>Adm. de Productos</h1>
+            <p>
+              Aqui puedes adminstrar los productos. Ver, buscar,crear, editar y
+              borrar usuarios como estimes necesario.
+            </p>
+          </header>
+
+          <main class="productos-container">
+            <div class="head-producto">
+              <div class="busqueda">
+                <form asp-action="Index" method="get">
+                  <button type="submit">
+                    <i
+                      class="fa-solid fa-magnifying-glass"
+                      style="color: #ffffff"
+                    ></i>
+                  </button>
+                  <input
+                  name="Busqueda"
+                    type="text"
+                    placeholder="Busqueda por Codigo o Nombre"
+                  />
+                </form>
+              </div>
+              <div class="add">
+                <a asp-action="Create" asp-controller="Producto"
+                  ><i
+                    class="fa-solid fa-folder-plus"
+                    style="color: #ffffff"
+                  ></i>
+                  Nuevo Producto
+                </a>
+              </div>
+            </div>
+            <table class="tableUsuarios">
+              <thead>
+                <tr>
+                  <th>CodigoBarra</th>
+                  <th>Nombre</th>
+                  <th>Cepa</th>
+                  <th>PaisOrigen</th>
+                  <th>PaisDestino</th>
+                  <th>FechaCosecha</th>
+                  <th>FechaProduccion</th>
+
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              @foreach (var item in ViewBag.Productos) {
+
+                <tr>
+                  <td>
+                  @item.CodigoBarra
+                  </td>
+                    <td>
+                        @item.Nombre
+                    </td>
+                    <td>
+                        @item.Cepa
+                    </td>
+                    <td>
+                        @item.PaisOrigen
+                    </td>
+                    <td>
+                        @item.PaisDestino
+                    </td>
+                    <td>
+                        @item.FechaCosecha
+                    </td>
+                    <td>
+                        @item.FechaProduccion
+                    </td>
+
+                  <td>
+                                        <a asp-action="Edit" asp-controller="Producto" asp-route-id="@item.idProducto"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
+                                        <a asp-action="Delete" asp-controller="Producto" asp-route-id="@item.idProducto"> <i class="fa-solid fa-trash" style="color: #ffffff;"></i> </a>
+                                        <a asp-action="Details" asp-controller="Producto" asp-route-id="@item.idProducto"><i class="fa-solid fa-circle-info" style="color: #ffffff;"></i></a>
+
+                                    </td>
+                </tr>
+
+                }
+              </tbody>
+            </table>
+          </main>
+        </div>
+        <div class="view" id="busqueda" style="display: none">
+          <header>
+            <h1>Buscador/Scanner</h1>
+            <p>
+              Aqui puedes buscar por nombre, codigo o escaneando el codigo de
+              barra del producto para ver su informacion.
+            </p>
+          </header>
+
+          <main class="productos-container">
+            <div class="head-producto">
+              <div class="busqueda">
+                <form asp-action="Index" method="get">
+                  <button type="submit">
+                    <i
+                      class="fa-solid fa-magnifying-glass"
+                      style="color: #ffffff"
+                    ></i>
+                  </button>
+                  <input
+                    type="text"
+                    name="Busqueda"
+                    placeholder="Busqueda por Codigo o Nombre"
+                  />
+                </form>
+              </div>
+              <div class="add">
+                <a href=""
+                  ><i class="fa-solid fa-camera" style="color: #ffffff"></i>
+                  Scanner
+                </a>
+              </div>
+            </div>
+
+            <table class="tableUsuarios">
+              <thead>
+                <tr>
+                  <th>CodigoBarra</th>
+                  <th>Nombre</th>
+                  <th>Cepa</th>
+                  <th>PaisOrigen</th>
+                  <th>PaisDestino</th>
+                  <th>FechaCosecha</th>
+                  <th>FechaProduccion</th>
+
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                            @foreach (var item in ViewBag.Productos)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @item.CodigoBarra
+                                    </td>
+                                    <td>
+                                        @item.Nombre
+                                    </td>
+                                    <td>
+                                        @item.Cepa
+                                    </td>
+                                    <td>
+                                        @item.PaisOrigen
+                                    </td>
+                                    <td>
+                                        @item.PaisDestino
+                                    </td>
+                                    <td>
+                                        @item.FechaCosecha
+                                    </td>
+                                    <td>
+                                        @item.FechaProduccion
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="Details" asp-controller="Producto" asp-route-id="@item.idProducto"><i class="fa-solid fa-circle-info" style="color: #ffffff;"></i></a>
+
+                                    </td>
+                                </tr>
+
+                            }
+              </tbody>
+            </table>
+          </main>
+        </div>
+      </div>
     </div>
-</div>
+  </body>
 
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
+  ></script>
+  <script type="text/javascript">
+    (function () {
+      const labels1 = ["Blanco", "Tinto", "Rose"];
+      const colors1 = ["white", "#5e2129", "#FF007F"];
 
+      const graph1 = document.querySelector("#grafica");
 
-
-
-
-
-
-
-
-    </main>
-
-    <main role="main"  class="pb-3 row">
-         <div class=" card col-sm" style="width: 500px">
-	        <canvas id="grafica"></canvas>
-        </div>
-
-         <div class="card col-sm" style="width: 500px">
-	        <canvas id="graficaproduccion"></canvas>
-        </div>
-     </main>
-     
-
-
-
-     
-</div>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
-<script type="text/javascript">
-(function() {
-    const labels1 = ['Blanco', 'Tinto', 'Rose'];
-    const colors1 = ['rgb(69,177,223)', 'rgb(99,201,122)', 'rgb(203,82,82)'];
-
-    const graph1 = document.querySelector("#grafica");
-
-    const data1 = {
+      const data1 = {
         labels: labels1,
-        datasets: [{
+        datasets: [
+          {
             data: [@ViewBag.countBlanco, @ViewBag.countTinto, @ViewBag.countRose],
-            backgroundColor: colors1
-        }]
-    };
+            backgroundColor: colors1,
+            borderColor: "transparent",
+          },
+        ],
+      };
 
-    const config1 = {
-        type: 'pie',
+      const config1 = {
+        type: "doughnut",
         data: data1,
-    };
+        options: {
+          plugins: {
+            legend: {
+              position: "right", // Coloca las etiquetas en el lado derecho
+              labels: {
+                color: "white", // Cambia el color de las etiquetas a blanco
+                font: {
+                  size: 18, // Cambia el tamaño de las etiquetas
+                },
+              },
+            },
+          },
+        },
+      };
 
-    new Chart(graph1, config1);
-})();
+      new Chart(graph1, config1);
+    })();
 
-(function() {
-    const labels2 = ['2022', '2023'];
-    const graph2 = document.querySelector("#graficaproduccion");
+    (function () {
+      const labels2 = ["2022", "2023"];
+      const graph2 = document.querySelector("#graficaproduccion");
 
-    const data2 = {
+      const data2 = {
         labels: labels2,
-        datasets: [{
-            		label:"Produccion c/Año",
+        datasets: [
+          {
+            label: "Produccion c/Año",
 
             data: [@ViewBag.produccionDosAnio, @ViewBag.produccionUnAnio],
-            backgroundColor: 'rgba(9, 129, 176, 0.2)'
-        }]
-    };
+            backgroundColor: ["#34baeb"],
+          },
+        ],
+      };
 
-    const config2 = {
-        type: 'bar',
+      const config2 = {
+        type: "bar",
         data: data2,
-    };
+      };
 
-    new Chart(graph2, config2);
-})();
-</script>
+      new Chart(graph2, config2);
+    })();
+  </script>
+  <script src="~/js/admin.js"></script>
+</html>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pgChQYzWvpirjUaQ6n9fC+USMWnnYD2qhotDtlQydbU=",
+  "Hash": "IHmnSQcSCY8FMNMo7mEaDFEQC28nGOI+TmIVHV4uOb8=",
   "Source": "ScannerCC",
   "BasePath": "_content/ScannerCC",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ScannerCC.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\css\\login.css",
+      "SourceId": "ScannerCC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\",
+      "BasePath": "_content/ScannerCC",
+      "RelativePath": "css/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login.css"
     },
     {
       "Identity": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\css\\site.css",
@@ -102,6 +119,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\img\\Brand initial Simple Logo.png",
+      "SourceId": "ScannerCC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\",
+      "BasePath": "_content/ScannerCC",
+      "RelativePath": "img/Brand initial Simple Logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Brand initial Simple Logo.png"
+    },
+    {
       "Identity": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\img\\logo-cc.jpg",
       "SourceId": "ScannerCC",
       "SourceType": "Discovered",
@@ -117,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\logo-cc.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\js\\admin.js",
+      "SourceId": "ScannerCC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\",
+      "BasePath": "_content/ScannerCC",
+      "RelativePath": "js/admin.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\admin.js"
     },
     {
       "Identity": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\wwwroot\\js\\site.js",

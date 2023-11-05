@@ -100,7 +100,23 @@ namespace ScannerCC.Controllers
         }
 
 
+        
+        public IActionResult CreateAdminUser()
+        {
+            Usuario U = new Usuario();
+            U.Rut = "admin";
+            U.Email = "admin";
+            U.Nombre = "admin";
+            CreatePasswordHash("admin", out byte[] passwordHash, out byte[] passwordSalt);
 
+            U.PasswordHash = passwordHash;
+            U.PasswordSalt = passwordSalt;
+            U.RolId = _context.Rol.Where(x => x.Nombre == "Administrador").FirstOrDefault().idRol;
+            _context.Usuario.Add(U);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
 
 
 
@@ -115,7 +131,8 @@ namespace ScannerCC.Controllers
             {
                 //el usuario ya esta registrado con el corre ingresado
                 ModelState.AddModelError("", "RUT Ya Registrado!");
-                return View();
+                return RedirectToAction("Index", "Home");
+
             }
             else
             {
@@ -133,7 +150,7 @@ namespace ScannerCC.Controllers
                 U.PasswordSalt = passwordSalt;
                 _context.Usuario.Add(U);
                 _context.SaveChanges();
-                return RedirectToAction("Index", "Usuario");
+                return RedirectToAction("Index", "Home");
             }
 
         }
@@ -165,11 +182,11 @@ namespace ScannerCC.Controllers
                 U.PasswordSalt = passwordSalt;
                 _context.Usuario.Update(U);
                 _context.SaveChanges();
-                return RedirectToAction("Index", "Usuario");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
-                return RedirectToAction("Index", "Usuario");
+                return RedirectToAction("Index", "Home");
             }
 
 

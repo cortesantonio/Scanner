@@ -90,7 +90,7 @@ namespace ScannerCC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(producto);
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -140,7 +140,7 @@ namespace ScannerCC.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             return View(producto);
         }
@@ -179,7 +179,7 @@ namespace ScannerCC.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool ProductoExists(int id)

@@ -29,6 +29,12 @@ namespace ScannerCC.Controllers
 
                 }
             }
+            var Users = _context.Usuario.ToList().Count;
+            if (Users == 0)
+            {
+                return RedirectToAction("CreateAdminUser", "Auth");
+
+            }
 
 
             if (User.Identity.IsAuthenticated)

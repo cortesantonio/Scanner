@@ -17,7 +17,7 @@ namespace ScannerCC.Controllers
             _context = context;
         }
         // GET: AdministradorController
-        public ActionResult Index(string Busqueda)
+        public ActionResult Index(string Busqueda, string BusquedaUsuarios)
         {
             DateTime fechaHoy = DateTime.Now;
             DateTime fechaMesAnterior = fechaHoy.AddMonths(-1);
@@ -90,6 +90,16 @@ namespace ScannerCC.Controllers
                         ViewBag.Productos = _context.Producto.Where(x => x.Nombre.Contains(Busqueda)).ToList();
 
                     }
+
+                }
+
+
+                if (BusquedaUsuarios != null)
+                {
+                   
+
+                        ViewBag.Usuarios = _context.Usuario.Where(x => x.Rut == BusquedaUsuarios || x.Nombre == BusquedaUsuarios).ToList();
+
 
                 }
                 return View();

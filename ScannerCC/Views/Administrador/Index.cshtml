@@ -57,7 +57,7 @@
         <nav class="navbar">
           <div class="div1">
             <i class="fa-solid fa-magnifying-glass" style="color: #bbbbbb"></i>
-            <input
+            <input disabled
               type="text"
               placeholder="Busqueda de Herramientas"
               name=""
@@ -75,8 +75,7 @@
             </button>
             <div id="opcionesUser" style="display: none">
               <ul>
-                <li>Editar Informacion</li>
-                <li><a asp-controller="Auth" style="color:red;" asp-action="LogOut" class="dropdown-item">Cerrar Sesion</a></li>
+                <li><a asp-controller="Auth" style="color:red; text-decoration:none;" asp-action="LogOut" class="dropdown-item">Cerrar Sesion</a></li>
               </ul>
             </div>
           </div>
@@ -142,31 +141,8 @@
               </div>
             </div>
 
-            <div class="div9">
-              <h3>Actividad Reciente *</h3>
-              <table>
-                <tr>
-                  <th>Usuario</th>
-                  <th>Rol</th>
-                  <th>Hora</th>
-                  <th>Producto</th>
-                  <th>Operacion</th>
-                </tr>
-                <tr>
-                  <td>Antonio</td>
-                  <td class="Adminstrador">Adminstrador</td>
-                  <td>17:03</td>
-                  <td>Vino Blanco</td>
-                  <td>Scaneo</td>
-                </tr>
-                <tr>
-                  <td>Antonio</td>
-                  <td class="Especialista">Especialista</td>
-                  <td>17:00</td>
-                  <td>Vino Tinto</td>
-                  <td>Busqueda</td>
-                </tr>
-              </table>
+            <div class="div9" style="background-color:transparent;">
+              
             </div>
             <div class="div10" style="position: relative">
               <div class="card col-sm" style="width: 70%">
@@ -186,7 +162,26 @@
             </p>
           </header>
 
-          <main class="usuario-container">
+          <main class="usuario-container" style="display:flex; flex-direction:column;">
+              <div class="head-producto">
+                  <div class="busqueda">
+                    <form asp-action="Index" method="get">
+                      <button type="submit">
+                        <i
+                          class="fa-solid fa-magnifying-glass"
+                          style="color: #ffffff"
+                        ></i>
+                      </button>
+                      <input
+                      name="BusquedaUsuarios"
+                        type="text"
+                        placeholder="Busqueda por RUT o Nombre"
+                      />
+                    </form>
+                  </div>
+              
+            </div>
+
             <table class="tableUsuarios">
               <thead>
                 <tr>
@@ -338,8 +333,8 @@
                 </form>
               </div>
               <div class="add">
-                <a href=""
-                  ><i class="fa-solid fa-camera" style="color: #ffffff"></i>
+                            <a onclick="alert('PROXIMAMENTE')">
+                                <i class="fa-solid fa-camera" style="color: #ffffff"></i>
                   Scanner
                 </a>
               </div>

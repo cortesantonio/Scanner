@@ -1,64 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="login.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <title>Login</title>
-  </head>
-  <body>
-    <div class="logcontenedor">
-      <div class="presentacionLog">
-        <div class="nameApp">
-          <i class="fa-brands fa-opencart">QualityScoult</i> 
-        </div>
-        <div class="bnvLog">
-          <div class="sisLog">Herramienta de Control de
-            Calidad.</div>
+<html lang="en">
 
-          <div class="tituloLog">
-            QualityScoult
-            <div class="line10"></div>
-          </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Ler Barcode </title>
+</head>
 
-          <div class="infoLog">
-            Bienvenido a la plataforma de gestión y consulta de control de calidad.  <br>
-            Si ya es usuario de esta plataforma, por favor inicie sesión utilizando 
-            los datos proporcionados por su superior. <br>Si ha olvidado sus datos de inicio 
-            de sesión, no dude en ponerse en contacto con el administrador para recibir asistencia.
-            
-          </div>
-          <div class="arrow">
-            <center><i class="fa-solid fa-arrow-down"></i></center>
-          </div>
-        </div>
-      </div>
+<body>
 
-      <div class="formularioLogin">
-        <h2>Inicio de Sesion</h2>
-        <form action="/administrador.html" >
-          <input type="text" name="rut" placeholder="Rut o Email" id="" />
-          <input
-            type="password"
-            name="password"
-            placeholder="Contraseña"
-            id=""
-          />
-          <div class="alerta" role="alert">{{message}}</div>
-          <button style="cursor: pointer" type="submit">
-            <i class="fa-solid fa-right-to-bracket"></i> Entrar
-          </button>
-        </form>
-        <center>
-          <a href="/"><button style="cursor: pointer">Volver atras</button></a>
-        </center>
-      </div>
-    </div>
-  </body>
+    <div id="resultado"></div>
+    <div id="camera"></div>
+
+    <script src="quagga.min.js"></script>
+
+    <script>
+
+        Quagga.init({
+            inputStream: {
+                name: "Live",
+                type: "LiveStream",
+                target: document.querySelector('#camera')    // Or '#yourElement' (optional)
+            },
+            decoder: {
+                readers: ["ean_reader"]
+            }
+        }, function (err) {
+            if (err) {
+                console.log(err);
+                return
+            }
+            console.log("Initialization finished. Ready to start");
+            Quagga.start();
+        });
+
+        Quagga.onDetected(function (data) {
+            console.log(data.codeResult.code);
+            document.querySelector('#resultado').innerText = data.codeResult.code;
+        });
+
+    </script>
+
+</body>
+
 </html>

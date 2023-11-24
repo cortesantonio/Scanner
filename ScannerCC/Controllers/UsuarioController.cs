@@ -52,7 +52,6 @@ namespace ScannerCC.Controllers
 
 
         // GET: Usuarios/Edit/5
-        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Usuario == null)
@@ -60,12 +59,24 @@ namespace ScannerCC.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuario.FindAsync(id);
+            var usuario =  _context.Usuario.Include(x => x.Rol).Where( x => x.idUsuario == id).FirstOrDefault();
+            var usuarioSesion = _context.Usuario.Include(x => x.Rol).Where(x => x.Rut.Equals(User.Identity.Name)).FirstOrDefault();
             if (usuario == null)
             {
                 return NotFound();
             }
-            return View(usuario);
+
+            if (id == usuarioSesion.idUsuario)
+            {
+                return View(usuario);
+
+            }else if (usuarioSesion.Rol.Nombre == "Administrador") {
+                return View(usuario);
+
+            }else
+            {
+                return NotFound();
+            }
         }
 
 

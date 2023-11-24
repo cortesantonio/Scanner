@@ -24,27 +24,18 @@ namespace ScannerCC.Controllers
             {
                 ViewBag.trab = _context.Usuario.Where(t => t.Rut.Equals(User.Identity.Name)).FirstOrDefault();
 
-               
+
                 ViewBag.Usuarios = _context.Usuario.Include(r => r.Rol).ToList();
                 ViewBag.Productos = _context.Producto.ToList();
+
 
                 //Si se realiza busqueda de productos evalua y filtra datos
                 if (Busqueda != null)
                 {
-                    var esNumero = int.TryParse(Busqueda, out int parsedInt);
-                    if (esNumero)
+                    //Si se realiza busqueda de productos evalua y filtra datos
+                    if (Busqueda != null)
                     {
-                        // Si es una entero, realiza la búsqueda por Codigo.
-
-                        ViewBag.Productos = _context.Producto.Where(x => x.CodigoBarra == parsedInt).ToList();
-
-
-                    }
-                    else
-                    {
-                        // Si es una cadena, realiza la búsqueda por Nombre.
-                        ViewBag.Productos = _context.Producto.Where(x => x.Nombre.Contains(Busqueda)).ToList();
-
+                        ViewBag.Productos = _context.Producto.Where(x => x.Nombre.Contains(Busqueda) ||  x.CodigoBarra.Contains(Busqueda)).ToList();
                     }
 
                 }

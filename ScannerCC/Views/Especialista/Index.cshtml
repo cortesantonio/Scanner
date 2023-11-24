@@ -1,153 +1,168 @@
-
 @{
-    var paisesConRecuento = ViewBag.PaisesConRecuento as List<Paises>;
-    Layout = null;
+  var paisesConRecuento = ViewBag.PaisesConRecuento as List<Paises>;
+  Layout = null;
 }
 
 
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="~/css/style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="container">
-      <aside class="menu">
-        <div class="logo">
-          <img src="img/Brand initial Simple Logo.png" alt="LOGO" />
-        </div>
-        <div class="line"></div>
-        <div class="links">
-          <ul>
-            <li>
-              <button onclick="switchView('busqueda')" id="btnView">
-                <i class="fa-solid fa-barcode"></i> Buscador/Scanner
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div class="line"></div>
-      </aside>
-      <div class="main">
-        <nav class="navbar" style="justify-content:end;">
-        
-          <div class="div2">
-    
-            <div class="user">
-              <h3>@ViewBag.trab.Nombre</h3>
-              <p>Especialista</p>
-            </div>
-                    <button id="showOptionUser" onclick="showOptionUser()">
-              <i class="fa-solid fa-caret-down"></i>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="~/css/style.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <aside class="menu">
+      <div class="logo">
+        <img src="img/Brand initial Simple Logo.png" alt="LOGO" />
+      </div>
+      <div class="line"></div>
+      <div class="links">
+        <ul>
+          <li>
+            <button onclick="switchView('busqueda')" id="btnView">
+              <i class="fa-solid fa-barcode"></i> Buscador/Scanner
             </button>
-            <div id="opcionesUser" style="display: none">
-              <ul>
-                <li><a asp-controller="Auth" style="color:red;" asp-action="LogOut" class="dropdown-item">Cerrar Sesion</a></li>
-              </ul>
-            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="line"></div>
+    </aside>
+    <div class="main">
+      <nav class="navbar" style="justify-content:end;">
+
+        <div class="div2">
+
+          <div class="user">
+            <h3>@ViewBag.trab.Nombre</h3>
+            <p>Especialista</p>
           </div>
-        </nav>
+          <button id="showOptionUser" onclick="showOptionUser()">
+            <i class="fa-solid fa-caret-down"></i>
+          </button>
+          <div id="opcionesUser" style="display: none">
+            <ul>
+                <li>
+                                <a asp-action="Edit" asp-controller="Usuario" asp-route-id="@ViewBag.trab.idUsuario">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+                                </a>
+                </li>
 
-        <div class="view" id="busqueda">
-          <header>
-            <h1>Buscador/Scanner</h1>
-            <p>
-              Aqui puedes buscar por nombre, codigo o escaneando el codigo de
-              barra del producto para ver su informacion.
-            </p>
-          </header>
 
-          <main class="productos-container">
-            <div class="head-producto">
-              <div class="busqueda">
-                <form asp-action="Index" method="get">
-                  <button type="submit">
-                    <i
-                      class="fa-solid fa-magnifying-glass"
-                      style="color: #ffffff"
-                    ></i>
-                  </button>
-                  <input
-                    type="text"
-                    name="Busqueda"
-                    placeholder="Busqueda por Codigo o Nombre"
-                  />
-                </form>
-              </div>
+              <li><a asp-controller="Auth" style="color:red;" asp-action="LogOut" class="dropdown-item">Cerrar
+                  Sesion</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="view" id="busqueda">
+        <header>
+          <h1>Buscador/Scanner</h1>
+          <p>
+            Aqui puedes buscar por nombre, codigo o escaneando el codigo de
+            barra del producto para ver su informacion.
+          </p>
+        </header>
+
+        <main class="productos-container">
+          <div class="head-producto">
+            <div class="busqueda" style="display: inline;">
+
+              <form asp-action="Index" method="get" id="formularioBuscar">
+                <button type="submit">
+                  <i class="fa-solid fa-magnifying-glass" style="color: #ffffff"></i>
+                </button>
+                <input type="text" name="Busqueda" id="Busqueda" placeholder="Busqueda por Codigo o Nombre" />
+              </form>
               <div class="add">
-                <a onclick="alert('PROXIMAMENTE')"
-                  ><i class="fa-solid fa-camera" style="color: #ffffff"></i>
+                <a id="openModalBtn">
+                  <i class="fa-solid fa-camera" style="color: #ffffff"></i>
                   Scanner
                 </a>
               </div>
+
             </div>
 
-            <table class="tableUsuarios">
-              <thead>
+          </div>
+
+          <table class="tableUsuarios">
+            <thead>
+              <tr>
+                <th>CodigoBarra</th>
+                <th>Nombre</th>
+                <th>Cepa</th>
+                <th>PaisOrigen</th>
+                <th>PaisDestino</th>
+                <th>FechaCosecha</th>
+                <th>FechaProduccion</th>
+
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach (var item in ViewBag.Productos)
+              {
+
                 <tr>
-                  <th>CodigoBarra</th>
-                  <th>Nombre</th>
-                  <th>Cepa</th>
-                  <th>PaisOrigen</th>
-                  <th>PaisDestino</th>
-                  <th>FechaCosecha</th>
-                  <th>FechaProduccion</th>
+                  <td>
+                    @item.CodigoBarra
+                  </td>
+                  <td>
+                    @item.Nombre
+                  </td>
+                  <td>
+                    @item.Cepa
+                  </td>
+                  <td>
+                    @item.PaisOrigen
+                  </td>
+                  <td>
+                    @item.PaisDestino
+                  </td>
+                  <td>
+                    @item.FechaCosecha
+                  </td>
+                  <td>
+                    @item.FechaProduccion
+                  </td>
 
-                  <th></th>
+                  <td>
+                    <a asp-action="Details" asp-controller="Producto" asp-route-id="@item.idProducto"><i
+                        class="fa-solid fa-circle-info" style="color: #ffffff;"></i></a>
+
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                            @foreach (var item in ViewBag.Productos)
-                            {
 
-                                <tr>
-                                    <td>
-                                        @item.CodigoBarra
-                                    </td>
-                                    <td>
-                                        @item.Nombre
-                                    </td>
-                                    <td>
-                                        @item.Cepa
-                                    </td>
-                                    <td>
-                                        @item.PaisOrigen
-                                    </td>
-                                    <td>
-                                        @item.PaisDestino
-                                    </td>
-                                    <td>
-                                        @item.FechaCosecha
-                                    </td>
-                                    <td>
-                                        @item.FechaProduccion
-                                    </td>
-
-                                    <td>
-                                        <a asp-action="Details" asp-controller="Producto" asp-route-id="@item.idProducto"><i class="fa-solid fa-circle-info" style="color: #ffffff;"></i></a>
-
-                                    </td>
-                                </tr>
-
-                            }
-              </tbody>
-            </table>
-          </main>
-        </div>
+              }
+            </tbody>
+          </table>
+        </main>
       </div>
     </div>
-  </body>
+  </div>
 
-  
-  <script src="~/js/admin.js"></script>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn">&times;</span>
+      <div style="width:250px;" id="camera"></div>
+      <p>Resultado: <span id="resultado"></span></p>
+    </div>
+  </div>
+
+
+</body>
+
+
+<script src="~/js/especialista.js"></script>
+<script src="~/js/quagga.min.js"></script>
+
 </html>

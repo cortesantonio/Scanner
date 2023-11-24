@@ -154,6 +154,7 @@ namespace ScannerCC.Controllers
             }
 
         }
+
         [HttpPost]
         public IActionResult Edit(string Email, string Rut, string Nombre, string Password, string Rol)
         {

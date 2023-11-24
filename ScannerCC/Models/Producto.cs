@@ -8,7 +8,7 @@ namespace ScannerCC.Models
         [Key]
         public int idProducto { get; set; }
 
-        public int CodigoBarra { get; set; }
+        public string CodigoBarra { get; set; }
         public string Nombre { get; set; }
         public string Cepa{ get; set; }
         public string? PaisOrigen { get; set; }

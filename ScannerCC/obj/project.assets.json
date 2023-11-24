@@ -11433,11 +11433,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\ScannerCC.csproj",
+      "projectUniqueName": "C:\\Users\\Antonio\\source\\repos\\Scanner\\ScannerCC\\ScannerCC.csproj",
       "projectName": "ScannerCC",
-      "projectPath": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\ScannerCC.csproj",
+      "projectPath": "C:\\Users\\Antonio\\source\\repos\\Scanner\\ScannerCC\\ScannerCC.csproj",
       "packagesPath": "C:\\Users\\Antonio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\obj\\",
+      "outputPath": "C:\\Users\\Antonio\\source\\repos\\Scanner\\ScannerCC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Antonio\\AppData\\Roaming\\NuGet\\NuGet.Config",

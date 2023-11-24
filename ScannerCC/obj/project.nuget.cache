@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NPZhIbUwrUC1gscFnIAmyjTpJk1t3iIynDAPfOUCg1zBbs+2PmvCXqG7BK9JXXe+/2OErK5qqQnEgvdL/5s83A==",
+  "dgSpecHash": "mW9e/3Ark29C1uV1U+v3iR/+TBV3jGv08vqNXGXxFHDTSwiexjMsPbIQZ0nFvuB/oRp3vUJ5dD9GKZf3WUE2mw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Antonio\\source\\repos\\ScannerCC\\ScannerCC\\ScannerCC.csproj",
+  "projectFilePath": "C:\\Users\\Antonio\\source\\repos\\Scanner\\ScannerCC\\ScannerCC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Antonio\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Antonio\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

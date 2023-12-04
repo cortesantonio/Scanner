@@ -26,21 +26,38 @@ namespace ScannerCC.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
+                // OBTENER INFORMACIOON DE USUARIO ACTIVO EN BASE DE DATOS.
                 var TrabajadorActivo = _context.Usuario.Where(t => t.Rut.Equals(User.Identity.Name)).FirstOrDefault();
                 ViewBag.trab = TrabajadorActivo;
 
-                ViewBag.countUsuariosEspecialista = _context.Usuario
+                //Consulta de usuarios en base de datos de usuarios con rol'Especialista'.
+                vas Especialistas = _context.Usuario
                     .Include(x => x.Rol)
-                    .Where(r => r.Rol.Nombre == "Especialista").ToList().Count;
+                    .Where(r => r.Rol.Nombre == "Especialista").ToList();
                 
-                ViewBag.countUsuariosAdministrador = _context.Usuario
+                ViewBag.countUsuariosEspecialista = Especialistas.Count;
+                
+
+                //Consulta de usuarios en base de datos de usuarios con rol'Administrador'.
+
+                var Administradores = _context.Usuario
                     .Include(x => x.Rol)
-                    .Where(r => r.Rol.Nombre == "Administrador").ToList().Count;
+                    .Where(r => r.Rol.Nombre == "Administrador").ToList();
 
-                ViewBag.countRose = _context.Producto.Where(r => r.TipoEtiqueta == "Rose").ToList().Count;
-                ViewBag.countTinto = _context.Producto.Where(r => r.TipoEtiqueta == "Tinto").ToList().Count;
-                ViewBag.countBlanco = _context.Producto.Where(r => r.TipoEtiqueta == "Blanco").ToList().Count;
+                ViewBag.countUsuariosAdministrador = Administradores.Count;
 
+                //DATOS PARA GRAFICO DE TORTA DE TIPOS DE ETIQUETAS
+                var counts = _context.Producto
+                    .GroupBy(r => r.TipoEtiqueta)
+                    .Select(g => new { Etiqueta = g.Key, Count = g.Count() })
+                    .ToList();
+
+                ViewBag.countRose = counts.FirstOrDefault(c => c.Etiqueta == "Rose")?.Count ?? 0;
+                ViewBag.countTinto = counts.FirstOrDefault(c => c.Etiqueta == "Tinto")?.Count ?? 0;
+                ViewBag.countBlanco = counts.FirstOrDefault(c => c.Etiqueta == "Blanco")?.Count ?? 0;
+
+
+                // DATOS PARA GRAFICO PAISES - PRODUCTOS 
                 ViewBag.paisesConRecuento = _context.Producto
                .GroupBy(p => p.PaisDestino)
                .Select(g => new Paises { PaisDestino = g.Key, Cantidad = g.Count() })
@@ -48,13 +65,11 @@ namespace ScannerCC.Controllers
 
                 ViewBag.countProductos = _context.Producto.ToList().Count;
                 ViewBag.countUsuarios = _context.Usuario.ToList().Count;
-
                 ViewBag.countEscaneos = _context.Escaneo.ToList().Count;
 
                 ViewBag.countEscaneosMes = _context.Escaneo
                     .Where(e => e.Fecha >= fechaMesAnterior && e.Fecha <= fechaHoy)
                     .ToList().Count;
-
 
                 ViewBag.produccionUnAnio = _context.Producto
                 .Where(e => (e.FechaProduccion ?? DateTime.MinValue) >= fechaHaceUnAnio && (e.FechaProduccion ?? DateTime.MinValue) <= fechaHoy)
@@ -78,8 +93,6 @@ namespace ScannerCC.Controllers
                 //Si se realiza busqueda de productos evalua y filtra datos
                 if (Busqueda != null)
                 {
-                    
-
                     var ProductoResultado = _context.Producto.Where(x => x.Nombre.Contains(Busqueda) || x.CodigoBarra.Contains(Busqueda)).ToList();
                     ViewBag.Productos= ProductoResultado;
                     if (ProductoResultado.Count > 0)
@@ -87,19 +100,16 @@ namespace ScannerCC.Controllers
                         Escaneo E = new Escaneo();
                         E.ProductoId = ProductoResultado.FirstOrDefault().idProducto;
                         E.UsuarioId = TrabajadorActivo.idUsuario;
-                        E.Fecha = DateTime.Now;
+                        E.Fecha = fechaHoy;
                         _context.Escaneo.Add(E);
                         _context.SaveChanges();
-
-                    }
-
-
+                    }             
                 }
 
                 //buscar usuarios
                 if (BusquedaUsuarios != null)
                 {
-                        ViewBag.Usuarios = _context.Usuario.Where(x => x.Rut == BusquedaUsuarios || x.Nombre == BusquedaUsuarios).ToList();
+                    ViewBag.Usuarios = _context.Usuario.Where(x => x.Rut == BusquedaUsuarios || x.Nombre == BusquedaUsuarios).ToList();
                 }
                 return View();
             }

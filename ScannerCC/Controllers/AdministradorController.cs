@@ -63,14 +63,15 @@ namespace ScannerCC.Controllers
                .Select(g => new Paises { PaisDestino = g.Key, Cantidad = g.Count() })
                .ToList();
 
+                // COUNT REGISTROS 
                 ViewBag.countProductos = _context.Producto.ToList().Count;
                 ViewBag.countUsuarios = _context.Usuario.ToList().Count;
                 ViewBag.countEscaneos = _context.Escaneo.ToList().Count;
-
+                    //ESCANEOS DEL MES ACTUAL
                 ViewBag.countEscaneosMes = _context.Escaneo
                     .Where(e => e.Fecha >= fechaMesAnterior && e.Fecha <= fechaHoy)
                     .ToList().Count;
-
+                    // ESCANEO DE HACE UN ANIO
                 ViewBag.produccionUnAnio = _context.Producto
                 .Where(e => (e.FechaProduccion ?? DateTime.MinValue) >= fechaHaceUnAnio && (e.FechaProduccion ?? DateTime.MinValue) <= fechaHoy)
                 .ToList().Count;
@@ -86,7 +87,7 @@ namespace ScannerCC.Controllers
                 {
                     ViewBag.produccionDosAnio = 0;
                 }
-
+        
                 ViewBag.Usuarios= _context.Usuario.Include(r => r.Rol).ToList();
                 ViewBag.Productos = _context.Producto.ToList();
 

@@ -12,8 +12,8 @@ using ScannerCC.Models;
 namespace ScannerCC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231103041153_fixImageNotRequiredProducto")]
-    partial class fixImageNotRequiredProducto
+    [Migration("20231204031511_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,16 +27,16 @@ namespace ScannerCC.Migrations
 
             modelBuilder.Entity("ScannerCC.Models.Escaneo", b =>
                 {
-                    b.Property<string>("IdEscaneo")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("IdEscaneo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdEscaneo"));
 
                     b.Property<int>("EscaneoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Hora")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ProductoId")
@@ -78,8 +78,9 @@ namespace ScannerCC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CodigoBarra")
-                        .HasColumnType("int");
+                    b.Property<string>("CodigoBarra")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ColorBotella")
                         .HasColumnType("nvarchar(max)");
@@ -98,9 +99,6 @@ namespace ScannerCC.Migrations
 
                     b.Property<float?>("GradoAlcohol")
                         .HasColumnType("real");
-
-                    b.Property<byte[]>("Imagen")
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<bool?>("Medalla")
                         .HasColumnType("bit");

@@ -24,16 +24,16 @@ namespace ScannerCC.Migrations
 
             modelBuilder.Entity("ScannerCC.Models.Escaneo", b =>
                 {
-                    b.Property<string>("IdEscaneo")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("IdEscaneo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdEscaneo"));
 
                     b.Property<int>("EscaneoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Hora")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ProductoId")

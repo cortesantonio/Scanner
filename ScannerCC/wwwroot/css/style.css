@@ -395,3 +395,22 @@
         margin: 0 auto;
     
 }
+.menu .links ul li{
+    list-style:none;
+
+}
+
+
+    @media only screen and (max-width: 900px) {
+        .container {
+            grid-template-columns: 1fr;
+        }
+
+        .menu .links ul {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            margin:20px auto 20px;
+            }
+
+    }

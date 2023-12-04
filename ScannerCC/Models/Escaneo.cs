@@ -6,7 +6,7 @@ namespace ScannerCC.Models
     public class Escaneo
     {
         [Key]
-        public string IdEscaneo { get; set; }
+        public int IdEscaneo { get; set; }
         public int EscaneoId { get; set; }
         public int ProductoId { get; set; }
         public Producto Producto { get; set; }
@@ -14,7 +14,6 @@ namespace ScannerCC.Models
         public int UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
         public DateTime Fecha { get; set; }
-        public DateTime Hora { get; set; }
 
         
     }

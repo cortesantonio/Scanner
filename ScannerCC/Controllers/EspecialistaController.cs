@@ -22,23 +22,36 @@ namespace ScannerCC.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                ViewBag.trab = _context.Usuario.Where(t => t.Rut.Equals(User.Identity.Name)).FirstOrDefault();
-
+                var TrabajadorActivo = _context.Usuario.Where(t => t.Rut.Equals(User.Identity.Name)).FirstOrDefault();
+                ViewBag.trab = TrabajadorActivo;
 
                 ViewBag.Usuarios = _context.Usuario.Include(r => r.Rol).ToList();
                 ViewBag.Productos = _context.Producto.ToList();
 
 
+
                 //Si se realiza busqueda de productos evalua y filtra datos
                 if (Busqueda != null)
                 {
-                    //Si se realiza busqueda de productos evalua y filtra datos
-                    if (Busqueda != null)
+
+
+                    var ProductoResultado = _context.Producto.Where(x => x.Nombre.Contains(Busqueda) || x.CodigoBarra.Contains(Busqueda)).ToList();
+                    ViewBag.Productos = ProductoResultado;
+
+                    if (ProductoResultado.Count > 0)
                     {
-                        ViewBag.Productos = _context.Producto.Where(x => x.Nombre.Contains(Busqueda) ||  x.CodigoBarra.Contains(Busqueda)).ToList();
+                        Escaneo E = new Escaneo();
+                        E.ProductoId = ProductoResultado.FirstOrDefault().idProducto;
+                        E.UsuarioId = TrabajadorActivo.idUsuario;
+                        E.Fecha = DateTime.Now;
+                        _context.Escaneo.Add(E);
+                        _context.SaveChanges();
+
                     }
 
+
                 }
+
 
 
                 return View();

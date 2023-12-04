@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ScannerCC.Migrations
 {
     /// <inheritdoc />
-    public partial class db : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace ScannerCC.Migrations
                 {
                     idProducto = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CodigoBarra = table.Column<int>(type: "int", nullable: false),
+                    CodigoBarra = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Cepa = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PaisOrigen = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -87,12 +87,12 @@ namespace ScannerCC.Migrations
                 name: "Escaneo",
                 columns: table => new
                 {
-                    IdEscaneo = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IdEscaneo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     EscaneoId = table.Column<int>(type: "int", nullable: false),
                     ProductoId = table.Column<int>(type: "int", nullable: false),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
-                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Hora = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

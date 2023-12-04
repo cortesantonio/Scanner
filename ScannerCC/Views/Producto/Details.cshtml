@@ -4,152 +4,183 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<style>
+    body {
+        background-color: #242424;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    a {
+        color: white;
+    }
+
+    a:hover {
+        color: #62EBF0;
+    }
+</style>
+
+<h1>Detalles</h1>
 
 <div>
     <h4>Producto</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CodigoBarra)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CodigoBarra)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cepa)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cepa)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PaisOrigen)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PaisOrigen)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PaisDestino)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PaisDestino)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaCosecha)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaCosecha)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaProduccion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaProduccion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Capacidad)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Capacidad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GradoAlcohol)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GradoAlcohol)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Azucar)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Azucar)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Sulfuroso)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Sulfuroso)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Densidad)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Densidad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoCapsula)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TipoCapsula)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoEtiqueta)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TipoEtiqueta)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ColorBotella)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ColorBotella)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Medalla)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Medalla)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ColorCapsula)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ColorCapsula)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoCorcho)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TipoCorcho)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoBotella)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TipoBotella)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AlturaBotella)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AlturaBotella)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AnchoBotella)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AnchoBotella)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MedidadEtiquetaABoquete)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MedidadEtiquetaABoquete)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MedidaEtiquetaABase)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MedidaEtiquetaABase)
-        </dd>
+    <dl class="row justify-content-center">
+        <div class="col-sm-4">
+            <div class="row justify-content-center">
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.CodigoBarra)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.CodigoBarra)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.Cepa)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Cepa)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.PaisOrigen)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.PaisOrigen)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.PaisDestino)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.PaisDestino)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.FechaCosecha)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.FechaCosecha)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.FechaProduccion)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.FechaProduccion)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.Capacidad)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Capacidad)
+                </dd>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row justify-content-center">
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.GradoAlcohol)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.GradoAlcohol)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.Azucar)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Azucar)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.Sulfuroso)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Sulfuroso)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.Densidad)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Densidad)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.TipoCapsula)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.TipoCapsula)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.TipoEtiqueta)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.TipoEtiqueta)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.ColorBotella)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.ColorBotella)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.Medalla)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Medalla)
+                </dd>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row justify-content-center">
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.ColorCapsula)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.ColorCapsula)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.TipoCorcho)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.TipoCorcho)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.TipoBotella)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.TipoBotella)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.AlturaBotella)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.AlturaBotella)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.AnchoBotella)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.AnchoBotella)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.MedidadEtiquetaABoquete)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.MedidadEtiquetaABoquete)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.MedidaEtiquetaABase)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.MedidaEtiquetaABase)
+                </dd>
+            </div>
+        </div>
     </dl>
 </div>
 <div>
-    <a asp-action="Index" asp-controller="Home">Back to List</a>
+    <a asp-action="Index" asp-controller="Home">Volver a la lista</a>
 </div>

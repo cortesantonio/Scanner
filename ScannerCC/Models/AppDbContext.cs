@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 
 namespace ScannerCC.Models
 {
@@ -11,12 +12,14 @@ namespace ScannerCC.Models
         public DbSet<Rol> Rol { get; set; }
         public DbSet<UsuarioProducto> UsuarioProducto { get; set; }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\ProjectModels;Initial Catalog=scan;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            optionsBuilder.UseSqlServer("Server = localhost\\SQLEXPRESS; Database =scanner;User Id=EC2AMAZ-3AAN22G\\Adminstrator; Integrated Security=True;TrustServerCertificate=true;");
         }
+
+
+
 
     }
 }

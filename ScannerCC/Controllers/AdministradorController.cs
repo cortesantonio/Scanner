@@ -31,7 +31,7 @@ namespace ScannerCC.Controllers
                 ViewBag.trab = TrabajadorActivo;
 
                 //Consulta de usuarios en base de datos de usuarios con rol'Especialista'.
-                vas Especialistas = _context.Usuario
+                var Especialistas = _context.Usuario
                     .Include(x => x.Rol)
                     .Where(r => r.Rol.Nombre == "Especialista").ToList();
                 

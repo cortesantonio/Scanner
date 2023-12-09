@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\Downloads\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj": {}
+    "C:\\Users\\trini\\OneDrive\\Escritorio\\Scanner\\Scanner\\ScannerCC\\ScannerCC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\Downloads\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj": {
+    "C:\\Users\\trini\\OneDrive\\Escritorio\\Scanner\\Scanner\\ScannerCC\\ScannerCC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Downloads\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj",
+        "projectUniqueName": "C:\\Users\\trini\\OneDrive\\Escritorio\\Scanner\\Scanner\\ScannerCC\\ScannerCC.csproj",
         "projectName": "ScannerCC",
-        "projectPath": "C:\\Users\\Administrator\\Downloads\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Downloads\\Scanner-master\\Scanner-master\\ScannerCC\\obj\\",
+        "projectPath": "C:\\Users\\trini\\OneDrive\\Escritorio\\Scanner\\Scanner\\ScannerCC\\ScannerCC.csproj",
+        "packagesPath": "C:\\Users\\trini\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\trini\\OneDrive\\Escritorio\\Scanner\\Scanner\\ScannerCC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\trini\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

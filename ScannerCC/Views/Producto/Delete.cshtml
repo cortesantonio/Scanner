@@ -40,6 +40,12 @@
     a:hover {
         color: #62EBF0;
     }
+
+    .row dt,
+    .row dd {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
 </style>
 
 <h1>Eliminar</h1>
@@ -52,49 +58,49 @@
         <div class="col-sm-4">
             <div class="row justify-content-center">
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.CodigoBarra)
+                    Codigo de barra
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.CodigoBarra)
                 </dd> 
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.Nombre)
+                    Nombre
                 </dt> 
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.Nombre)
                 </dd> 
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.Cepa)
+                    Cepa
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.Cepa)
                 </dd> 
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.PaisOrigen)
+                    Pais de origen
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.PaisOrigen)
                 </dd> 
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.PaisDestino)
+                    Pais de destino
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.PaisDestino)
                 </dd> 
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.FechaCosecha)
+                    Fecha de cosecha
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.FechaCosecha)
                 </dd> 
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.FechaProduccion)
+                    Fecha de produccion
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.FechaProduccion)
                 </dd> 
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.Capacidad)
+                    Capacidad
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.Capacidad)
@@ -104,95 +110,102 @@
         <div class="col-sm-4">
             <div class="row justify-content-center">
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.GradoAlcohol)
+                    Grado de alcohol
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.GradoAlcohol)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.Azucar)
+                    Azúcar
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.Azucar)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.Sulfuroso)
+                    Sulfuroso
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.Sulfuroso)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.Densidad)
+                    Densidad
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.Densidad)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.TipoCapsula)
+                    Tipo de capsula
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.TipoCapsula)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.TipoEtiqueta)
+                    Tipo de etiqueta
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.TipoEtiqueta)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.ColorBotella)
+                    Color de la botella
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.ColorBotella)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.Medalla)
+                    Medalla
                 </dt>
                 <dd class="col-sm-6">
-                    @Html.DisplayFor(model => model.Medalla)
+                    @if (Model.Medalla.HasValue)
+                    {
+                        <text>@(Model.Medalla.Value ? "Si" : "No")</text>
+                    }
+                    else
+                    {
+                        <text>Nulo</text>
+                    }
                 </dd>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="row justify-content-center">
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.ColorCapsula)
+                    Color de la capsula
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.ColorCapsula)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.TipoCorcho)
+                    Tipo de corcho
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.TipoCorcho)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.TipoBotella)
+                    Tipo de botella
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.TipoBotella)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.AlturaBotella)
+                    Altura de la etiqueta (mm)
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.AlturaBotella)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.AnchoBotella)
+                    Altura de la contraetiqueta (mm)
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.AnchoBotella)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.MedidadEtiquetaABoquete)
+                    Medida de etiqueta a boquete (cm)
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.MedidadEtiquetaABoquete)
                 </dd>
                 <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.MedidaEtiquetaABase)
+                    Medida de etiqueta a base (cm)
                 </dt>
                 <dd class="col-sm-6">
                     @Html.DisplayFor(model => model.MedidaEtiquetaABase)

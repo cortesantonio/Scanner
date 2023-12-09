@@ -25,7 +25,7 @@
       </div>
       <div class="line"></div>
       <div class="links">
-        <ul>
+          <ul class="listar"> 
           <li>
             <button onclick="switchView('dashboard')" id="btnView">
               <i class="fa-solid fa-chart-line"></i> Dashboard
@@ -242,13 +242,13 @@
           <table class="tableUsuarios">
             <thead>
               <tr>
-                <th>CodigoBarra</th>
+                <th>Codigo barra</th>
                 <th>Nombre</th>
                 <th>Cepa</th>
-                <th>PaisOrigen</th>
-                <th>PaisDestino</th>
-                <th>FechaCosecha</th>
-                <th>FechaProduccion</th>
+                <th>Pais origen</th>
+                <th>Pais destino</th>
+                <th>Fecha cosecha</th>
+                <th>Fecha produccion</th>
 
                 <th></th>
               </tr>
@@ -281,12 +281,17 @@
                   </td>
 
                   <td>
-                    <a asp-action="Edit" asp-controller="Producto" asp-route-id="@item.idProducto"><i
-                        class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
-                    <a asp-action="Delete" asp-controller="Producto" asp-route-id="@item.idProducto"> <i
-                        class="fa-solid fa-trash" style="color: #ffffff;"></i> </a>
-                    <a asp-action="Details" asp-controller="Producto" asp-route-id="@item.idProducto"><i
-                        class="fa-solid fa-circle-info" style="color: #ffffff;"></i></a>
+                    <a asp-action="Edit" asp-controller="Producto" asp-route-id="@item.idProducto">
+                        <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+                    </a> 
+                    |
+                    <a asp-action="Details" asp-controller="Producto" asp-route-id="@item.idProducto">
+                        <i class="fa-solid fa-circle-info" style="color: #ffffff;"></i>
+                    </a>
+                    |
+                    <a asp-action="Delete" asp-controller="Producto" asp-route-id="@item.idProducto">
+                        <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                    </a>
 
                   </td>
                 </tr>

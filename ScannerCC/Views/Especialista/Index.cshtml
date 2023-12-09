@@ -49,15 +49,8 @@
           </button>
           <div id="opcionesUser" style="display: none">
             <ul>
-                <li>
-                                <a asp-action="Edit" asp-controller="Usuario" asp-route-id="@ViewBag.trab.idUsuario">
-                                    <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
-                                </a>
-                </li>
-
-
               <li><a asp-controller="Auth" style="color:red;" asp-action="LogOut" class="dropdown-item">Cerrar
-                  Sesion</a></li>
+                  sesion</a></li>
             </ul>
           </div>
         </div>
@@ -74,35 +67,32 @@
 
         <main class="productos-container">
           <div class="head-producto">
-            <div class="busqueda" style="display: inline;">
-
+            <div class="busqueda">
               <form asp-action="Index" method="get" id="formularioBuscar">
                 <button type="submit">
                   <i class="fa-solid fa-magnifying-glass" style="color: #ffffff"></i>
                 </button>
                 <input type="text" name="Busqueda" id="Busqueda" placeholder="Busqueda por Codigo o Nombre" />
               </form>
-              <div class="add">
-                <a id="openModalBtn">
-                  <i class="fa-solid fa-camera" style="color: #ffffff"></i>
-                  Scanner
-                </a>
-              </div>
-
             </div>
+            <div class="add">
+              <a id="openModalBtn"><i class="fa-solid fa-camera" style="color: #ffffff"></i>
 
+                Scanner
+              </a>
+            </div>
           </div>
 
           <table class="tableUsuarios">
             <thead>
               <tr>
-                <th>CodigoBarra</th>
+                <th>Codigo barra</th>
                 <th>Nombre</th>
                 <th>Cepa</th>
-                <th>PaisOrigen</th>
-                <th>PaisDestino</th>
-                <th>FechaCosecha</th>
-                <th>FechaProduccion</th>
+                <th>Pais origen</th>
+                <th>Pais destino</th>
+                <th>Fecha cosecha</th>
+                <th>Fecha produccion</th>
 
                 <th></th>
               </tr>

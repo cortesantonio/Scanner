@@ -1,0 +1,224 @@
+﻿@model ScannerCC.Models.Producto
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<style>
+    body {
+        background-color: #242424;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    h4 {
+        margin-top: 20px;
+    }
+
+    input {
+        width: 30%;
+        margin: 10px;
+    }
+
+        input[type="submit"] {
+            background-color: red;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+    .btn-danger:hover {
+        background-color: darkred;
+        border-color: red;
+    }
+
+    a {
+        color: white;
+    }
+
+    a:hover {
+        color: #62EBF0;
+    }
+
+    .row dt,
+    .row dd {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+</style>
+
+<h1>Eliminar</h1>
+
+<h3>¿Estás seguro de que quieres eliminar esto?</h3>
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <dl class="row justify-content-center">
+        <div class="col-sm-4">
+            <div class="row justify-content-center">
+                <dt class="col-sm-6">
+                    Codigo de barra
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.CodigoBarra)
+                </dd> 
+                <dt class="col-sm-6">
+                    Nombre
+                </dt> 
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd> 
+                <dt class="col-sm-6">
+                    Cepa
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Cepa)
+                </dd> 
+                <dt class="col-sm-6">
+                    Pais de origen
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.PaisOrigen)
+                </dd> 
+                <dt class="col-sm-6">
+                    Pais de destino
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.PaisDestino)
+                </dd> 
+                <dt class="col-sm-6">
+                    Fecha de cosecha
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.FechaCosecha)
+                </dd> 
+                <dt class="col-sm-6">
+                    Fecha de produccion
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.FechaProduccion)
+                </dd> 
+                <dt class="col-sm-6">
+                    Capacidad
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Capacidad)
+                </dd> 
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row justify-content-center">
+                <dt class="col-sm-6">
+                    Grado de alcohol
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.GradoAlcohol)
+                </dd>
+                <dt class="col-sm-6">
+                    Azúcar
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Azucar)
+                </dd>
+                <dt class="col-sm-6">
+                    Sulfuroso
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Sulfuroso)
+                </dd>
+                <dt class="col-sm-6">
+                    Densidad
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Densidad)
+                </dd>
+                <dt class="col-sm-6">
+                    Tipo de capsula
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.TipoCapsula)
+                </dd>
+                <dt class="col-sm-6">
+                    Tipo de etiqueta
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.TipoEtiqueta)
+                </dd>
+                <dt class="col-sm-6">
+                    Color de la botella
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.ColorBotella)
+                </dd>
+                <dt class="col-sm-6">
+                    Medalla
+                </dt>
+                <dd class="col-sm-6">
+                    @if (Model.Medalla.HasValue)
+                    {
+                        <text>@(Model.Medalla.Value ? "Si" : "No")</text>
+                    }
+                    else
+                    {
+                        <text>Nulo</text>
+                    }
+                </dd>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row justify-content-center">
+                <dt class="col-sm-6">
+                    Color de la capsula
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.ColorCapsula)
+                </dd>
+                <dt class="col-sm-6">
+                    Tipo de corcho
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.TipoCorcho)
+                </dd>
+                <dt class="col-sm-6">
+                    Tipo de botella
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.TipoBotella)
+                </dd>
+                <dt class="col-sm-6">
+                    Altura de la etiqueta (mm)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.AlturaBotella)
+                </dd>
+                <dt class="col-sm-6">
+                    Altura de la contraetiqueta (mm)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.AnchoBotella)
+                </dd>
+                <dt class="col-sm-6">
+                    Medida de etiqueta a boquete (cm)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.MedidadEtiquetaABoquete)
+                </dd>
+                <dt class="col-sm-6">
+                    Medida de etiqueta a base (cm)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.MedidaEtiquetaABase)
+                </dd>
+            </div>
+        </div>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="idProducto" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> 
+    </form>
+</div>
+<div>
+    <a asp-action="Index" asp-controller="Home">Volver a la lista</a>
+</div>

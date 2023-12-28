@@ -11,11 +11,12 @@ namespace ScannerCC.Models
         public DbSet<Escaneo> Escaneo { get; set; }
         public DbSet<Rol> Rol { get; set; }
         public DbSet<UsuarioProducto> UsuarioProducto { get; set; }
+        public DbSet<Controles> Controles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Server = localhost\\SQLEXPRESS; Database =scanner;User Id=EC2AMAZ-3AAN22G\\Adminstrator; Integrated Security=True;TrustServerCertificate=true;");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
         }
 
 

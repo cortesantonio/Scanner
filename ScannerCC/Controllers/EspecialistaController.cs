@@ -27,6 +27,7 @@ namespace ScannerCC.Controllers
 
                 ViewBag.Usuarios = _context.Usuario.Include(r => r.Rol).ToList();
                 ViewBag.Productos = _context.Producto.ToList();
+                ViewBag.Controles = _context.Controles.Include(c => c.Producto);
 
 
 

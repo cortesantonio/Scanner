@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\trini\\OneDrive\\Escritorio\\Scanner\\Scanner\\ScannerCC\\ScannerCC.csproj": {}
+    "C:\\Users\\Antonio\\Desktop\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\trini\\OneDrive\\Escritorio\\Scanner\\Scanner\\ScannerCC\\ScannerCC.csproj": {
+    "C:\\Users\\Antonio\\Desktop\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\trini\\OneDrive\\Escritorio\\Scanner\\Scanner\\ScannerCC\\ScannerCC.csproj",
+        "projectUniqueName": "C:\\Users\\Antonio\\Desktop\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj",
         "projectName": "ScannerCC",
-        "projectPath": "C:\\Users\\trini\\OneDrive\\Escritorio\\Scanner\\Scanner\\ScannerCC\\ScannerCC.csproj",
-        "packagesPath": "C:\\Users\\trini\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\trini\\OneDrive\\Escritorio\\Scanner\\Scanner\\ScannerCC\\obj\\",
+        "projectPath": "C:\\Users\\Antonio\\Desktop\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj",
+        "packagesPath": "C:\\Users\\Antonio\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Antonio\\Desktop\\Scanner-master\\Scanner-master\\ScannerCC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\trini\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Antonio\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -1,3 +1,24 @@
+function switchViewEspecialista(view) {
+    views = ["busqueda", "controles"];
+    for (i = 0; i < views.length; i++) {
+        pagina = document.getElementById(views[i]);
+        pagina.style.display = "none";
+        if (view == views[i]) {
+            pagina.style.display = "block";
+        }
+    }
+    localStorage.setItem("view", view);
+}
+
+
+if (localStorage.getItem('view') != null) {
+    switchView(localStorage.getItem('view'))
+} else {
+    switchView("dashboard")
+
+}
+
+
 function showOptionUser() {
   var opciones = document.getElementById("opcionesUser");
   if (opciones.style.display == "block") {

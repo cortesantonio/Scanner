@@ -1,0 +1,81 @@
+﻿@model ScannerCC.Models.Controles
+
+<style>
+    body {
+        background-color: #242424;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    a {
+        color: white;
+    }
+
+        a:hover {
+            color: #62EBF0;
+        }
+
+    .row dt,
+    .row dd {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+</style>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Controles</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Producto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Producto.idProducto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Linea)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Linea)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cepa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cepa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PaisOrigen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PaisOrigen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PaisDestino)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PaisDestino)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Comentario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tipodecontrol)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tipodecontrol)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteConfirmed">
+        <input type="hidden" name="id" value="@Model.idControl" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index" asp-controller="Especialista">Back to List</a>
+    </form>
+</div>

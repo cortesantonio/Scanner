@@ -1,0 +1,198 @@
+﻿@model ScannerCC.Models.Producto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    body {
+        background-color: #242424;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    input, select {
+        width: 100%;
+        margin: 5px;
+    }
+
+        input[type="submit"] {
+            background-color: #20777A;
+            color: white;
+        }
+
+    .btn-dark:hover {
+        background-color: #62EBF0;
+        border-color: #20777A;
+        color: black;
+    }
+
+    a {
+        color: white;
+    }
+
+        a:hover {
+            color: #62EBF0;
+        }
+</style>
+
+<h1>Crear</h1>
+
+<h4>Producto</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CodigoBarra" class="control-label">Codigo de barra</label>
+                        <input asp-for="CodigoBarra" class="form-control" />
+                        <span asp-validation-for="CodigoBarra" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label">Nombre</label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Cepa" class="control-label">Cepa</label>
+                        <input asp-for="Cepa" class="form-control" />
+                        <span asp-validation-for="Cepa" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PaisOrigen" class="control-label">Pais de origen</label>
+                        <input asp-for="PaisOrigen" class="form-control" />
+                        <span asp-validation-for="PaisOrigen" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PaisDestino" class="control-label">Pais de destino</label>
+                        <input asp-for="PaisDestino" class="form-control" />
+                        <span asp-validation-for="PaisDestino" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FechaCosecha" class="control-label">Fecha de cosecha</label>
+                        <input asp-for="FechaCosecha" class="form-control" />
+                        <span asp-validation-for="FechaCosecha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FechaProduccion" class="control-label">Fecha de produccion</label>
+                        <input asp-for="FechaProduccion" class="form-control" />
+                        <span asp-validation-for="FechaProduccion" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Capacidad" class="control-label">Capacidad (ml)</label>
+                        <input asp-for="Capacidad" class="form-control" />
+                        <span asp-validation-for="Capacidad" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="GradoAlcohol" class="control-label">Grado de alcohol</label>
+                        <input asp-for="GradoAlcohol" class="form-control" />
+                        <span asp-validation-for="GradoAlcohol" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Azucar" class="control-label">Azúcar</label>
+                        <input asp-for="Azucar" class="form-control" />
+                        <span asp-validation-for="Azucar" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Sulfuroso" class="control-label">Sulfuroso</label>
+                        <input asp-for="Sulfuroso" class="form-control" />
+                        <span asp-validation-for="Sulfuroso" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Densidad" class="control-label">Densidad</label>
+                        <input asp-for="Densidad" class="form-control" />
+                        <span asp-validation-for="Densidad" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TipoCapsula" class="control-label">Tipo de capsula</label>
+                        <input asp-for="TipoCapsula" class="form-control" />
+                        <span asp-validation-for="TipoCapsula" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TipoEtiqueta" class="control-label">Tipo de etiqueta</label>
+                        <select asp-for="TipoEtiqueta">
+                            <option value="Rose">Rose</option>
+                            <option value="Tinto">Tinto</option>
+                            <option value="Blanco">Blanco</option>
+                        </select>
+                        <span asp-validation-for="TipoEtiqueta" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ColorBotella" class="control-label">Color de la botella</label>
+                        <input asp-for="ColorBotella" class="form-control" />
+                        <span asp-validation-for="ColorBotella" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Medalla" class="control-label">Medalla</label>
+                        <select asp-for="Medalla">
+                            <option value="True">Si</option>
+                            <option value="False">No</option>
+                        </select>
+                        <span asp-validation-for="Medalla" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ColorCapsula" class="control-label">Color de la capsula</label>
+                        <input asp-for="ColorCapsula" class="form-control" />
+                        <span asp-validation-for="ColorCapsula" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TipoCorcho" class="control-label">Tipo de corcho</label>
+                        <input asp-for="TipoCorcho" class="form-control" />
+                        <span asp-validation-for="TipoCorcho" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TipoBotella" class="control-label">Tipo de botella</label>
+                        <input asp-for="TipoBotella" class="form-control" />
+                        <span asp-validation-for="TipoBotella" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AlturaBotella" class="control-label">Altura de la etiqueta (mm)</label>
+                        <input asp-for="AlturaBotella" class="form-control" />
+                        <span asp-validation-for="AlturaBotella" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AnchoBotella" class="control-label">Altura de la contraetiqueta (mm)</label>
+                        <input asp-for="AnchoBotella" class="form-control" />
+                        <span asp-validation-for="AnchoBotella" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MedidadEtiquetaABoquete" class="control-label">Medida de etiqueta a boquete (cm)</label>
+                        <input asp-for="MedidadEtiquetaABoquete" class="form-control" />
+                        <span asp-validation-for="MedidadEtiquetaABoquete" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MedidaEtiquetaABase" class="control-label">Medida de etiqueta a base (cm)</label>
+                        <input asp-for="MedidaEtiquetaABase" class="form-control" />
+                        <span asp-validation-for="MedidaEtiquetaABase" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Crear" class="btn btn-dark" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Home">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

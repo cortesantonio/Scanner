@@ -1,0 +1,111 @@
+﻿@model ScannerCC.Models.Controles
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    body {
+        background-color: #242424;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    input, select {
+        width: 100%;
+        margin: 5px;
+    }
+
+        input[type="submit"] {
+            background-color: #20777A;
+            color: white;
+        }
+
+    .btn-dark:hover {
+        background-color: #62EBF0;
+        border-color: #20777A;
+        color: black;
+    }
+
+    a {
+        color: white;
+    }
+
+    a:hover {
+        color: #62EBF0;
+    }
+</style>
+
+<h1>Editar</h1>
+
+<h4>Controles</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <form asp-action="Edit2">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="idControl" />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ProductoId" class="control-label">Codigo de barra</label>
+                        <input asp-for="ProductoId" class="form-control" />
+                        <span asp-validation-for="ProductoId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Linea" class="control-label">Linea</label>
+                        <input asp-for="Linea" class="form-control" />
+                        <span asp-validation-for="Linea" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Cepa" class="control-label">Cepa</label>
+                        <input asp-for="Cepa" class="form-control" />
+                        <span asp-validation-for="Cepa" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PaisOrigen" class="control-label">Pais de origen</label>
+                        <input asp-for="PaisOrigen" class="form-control" />
+                        <span asp-validation-for="PaisOrigen" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PaisDestino" class="control-label">Pais de destino</label>
+                        <input asp-for="PaisDestino" class="form-control" />
+                        <span asp-validation-for="PaisDestino" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Comentario" class="control-label">Comentario</label>
+                        <input asp-for="Comentario" class="form-control" />
+                        <span asp-validation-for="Comentario" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Tipodecontrol" class="control-label">Tipo de Control</label>
+                    <select asp-for="Tipodecontrol">
+                        <option value="True">Rechazo</option>
+                        <option value="False">Preventivo</option>
+                    </select>
+                    <span asp-validation-for="Tipodecontrol" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Edit" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Home">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -22,6 +22,44 @@ namespace ScannerCC.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ScannerCC.Models.Controles", b =>
+                {
+                    b.Property<int>("idControl")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idControl"));
+
+                    b.Property<string>("Cepa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Comentario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Linea")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaisDestino")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaisOrigen")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Tipodecontrol")
+                        .HasColumnType("bit");
+
+                    b.HasKey("idControl");
+
+                    b.HasIndex("ProductoId");
+
+                    b.ToTable("Controles");
+                });
+
             modelBuilder.Entity("ScannerCC.Models.Escaneo", b =>
                 {
                     b.Property<int>("IdEscaneo")
@@ -209,6 +247,17 @@ namespace ScannerCC.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("UsuarioProducto");
+                });
+
+            modelBuilder.Entity("ScannerCC.Models.Controles", b =>
+                {
+                    b.HasOne("ScannerCC.Models.Producto", "Producto")
+                        .WithMany()
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Producto");
                 });
 
             modelBuilder.Entity("ScannerCC.Models.Escaneo", b =>

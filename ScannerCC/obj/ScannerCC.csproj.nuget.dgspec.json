@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Antonio\\Desktop\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj": {}
+    "C:\\Users\\Antonio\\Desktop\\Scanner\\ScannerCC\\ScannerCC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Antonio\\Desktop\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj": {
+    "C:\\Users\\Antonio\\Desktop\\Scanner\\ScannerCC\\ScannerCC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Antonio\\Desktop\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj",
+        "projectUniqueName": "C:\\Users\\Antonio\\Desktop\\Scanner\\ScannerCC\\ScannerCC.csproj",
         "projectName": "ScannerCC",
-        "projectPath": "C:\\Users\\Antonio\\Desktop\\Scanner-master\\Scanner-master\\ScannerCC\\ScannerCC.csproj",
+        "projectPath": "C:\\Users\\Antonio\\Desktop\\Scanner\\ScannerCC\\ScannerCC.csproj",
         "packagesPath": "C:\\Users\\Antonio\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Antonio\\Desktop\\Scanner-master\\Scanner-master\\ScannerCC\\obj\\",
+        "outputPath": "C:\\Users\\Antonio\\Desktop\\Scanner\\ScannerCC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Antonio\\AppData\\Roaming\\NuGet\\NuGet.Config",

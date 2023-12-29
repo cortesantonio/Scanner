@@ -16,7 +16,7 @@ namespace ScannerCC.Controllers
             _context = context;
         }
         // GET: AdministradorController
-        public ActionResult Index(string Busqueda, string BusquedaUsuarios)
+        public ActionResult Index(string Busqueda, string BusquedaUsuarios, int paginaEscaneos = 1, int paginaControles = 1)
         {
             DateTime fechaHoy = DateTime.Now;
             DateTime fechaMesAnterior = fechaHoy.AddMonths(-1);
@@ -90,6 +90,52 @@ namespace ScannerCC.Controllers
         
                 ViewBag.Usuarios= _context.Usuario.Include(r => r.Rol).ToList();
                 ViewBag.Productos = _context.Producto.ToList();
+
+
+                //Datos para la tablaEscaneos
+
+                const int registrosPorPagina = 2;
+
+                var escaneos = _context.Escaneo
+                    .Include(e => e.Producto)
+                    .Include(e => e.Usuario)
+                    .OrderByDescending(e => e.Fecha)
+                    .Skip((paginaEscaneos - 1) * registrosPorPagina)
+                    .Take(registrosPorPagina)
+                    .ToList();
+
+                ViewBag.Escaneos = escaneos;
+                ViewBag.PaginaActualEscaneos = paginaEscaneos;
+
+                //Datos adm. controles
+
+                var controles = _context.Controles
+                .Include(c => c.Producto)
+                .ToList();
+
+                ViewBag.Controles = controles;
+
+
+                //Datos para la tablaControl y sus count
+
+                int totalControles = _context.Controles.Count();
+
+                var controless = _context.Controles
+                    .Include(c => c.Producto)
+                    .Skip((paginaControles - 1) * registrosPorPagina)
+                    .Take(registrosPorPagina)
+                    .ToList();
+
+                ViewBag.Controless = controless;
+                ViewBag.PaginaActualControles = paginaControles;
+                ViewBag.TotalControles = totalControles;
+
+                int rechazos = _context.Controles.Count(c => c.Tipodecontrol == true);
+                int preventivos = _context.Controles.Count(c => c.Tipodecontrol == false);
+
+                ViewBag.Rechazos = rechazos;
+                ViewBag.Preventivos = preventivos;
+
 
                 //Si se realiza busqueda de productos evalua y filtra datos
                 if (Busqueda != null)

@@ -1,5 +1,5 @@
 function switchView(view) {
-  views = ["dashboard", "usuarios", "productos", "busqueda"];
+    views = ["dashboard", "informe", "usuarios", "productos", "controles", "busqueda"];
   for (i = 0; i < views.length; i++) {
     pagina = document.getElementById(views[i]);
     pagina.style.display = "none";

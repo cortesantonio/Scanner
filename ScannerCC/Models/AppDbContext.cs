@@ -16,7 +16,7 @@ namespace ScannerCC.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            optionsBuilder.UseSqlServer("Server = localhost\\SQLEXPRESS; Database =scanner;User Id=EC2AMAZ-3AAN22G\\Adminstrator; Integrated Security=True;TrustServerCertificate=true;");
         }
 
 

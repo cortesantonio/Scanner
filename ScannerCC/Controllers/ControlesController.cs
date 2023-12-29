@@ -61,7 +61,7 @@ namespace ScannerCC.Controllers
            
                 _context.Add(controles);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Especialista");
+                return RedirectToAction("Index","Home");
             
             
         }
@@ -112,7 +112,7 @@ namespace ScannerCC.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index","Especialista");
+                return RedirectToAction("Index","Home");
             
             
         }
@@ -143,7 +143,7 @@ namespace ScannerCC.Controllers
             var control =  _context.Controles.Where(x=>x.idControl == id).FirstOrDefault();
             _context.Controles.Remove(control);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Especialista");
+            return RedirectToAction("Index", "Home");
             
         }
 

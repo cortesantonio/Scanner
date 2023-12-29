@@ -32,6 +32,11 @@
             </button>
           </li>
           <li>
+            <button onclick="switchView('informe')" id="btnView">
+              <i class="fa-solid fa-chart-pie"></i> Informe gerencial
+            </button>
+          </li>
+          <li>
             <button onclick="switchView('usuarios')" id="btnView">
               <i class="fa-regular fa-user"></i>Adm. de usuarios
             </button>
@@ -39,6 +44,11 @@
           <li>
             <button onclick="switchView('productos')" id="btnView">
               <i class="fa-solid fa-bag-shopping"></i> Adm. de productos
+            </button>
+          </li>
+          <li>
+            <button onclick="switchView('controles')" id="btnView">
+                            <i class="fa-solid fa-clipboard-list"></i> Adm. de controles
             </button>
           </li>
           <li>
@@ -104,11 +114,11 @@
           </div>
           <div class="div5">
             <h3>@ViewBag.countEscaneos</h3>
-            <p>Numero de Escaneos(Totales)</p>
+            <p>Numero de Escaneos (Totales)</p>
           </div>
           <div class="div6">
             <h3>@ViewBag.countEscaneosMes</h3>
-            <p>Numero de Escaneos(Mes)</p>
+            <p>Numero de Escaneos (Mes)</p>
           </div>
           <div class="div7">
             <div class="card col-sm" style="width: 500px">
@@ -149,15 +159,164 @@
             </div>
             <p style="position: absolute; top: 20px">Tipos de etiquetas</p>
           </div>
+
+                    <div class="div11">
+                        <h3>@ViewBag.Rechazos</h3>
+                        <p>Número total de tipos de control como rechazo</p>
+                    </div>
+                    <div class="div12">
+                        <h3>@ViewBag.Preventivos</h3>
+                        <p>Número total de tipos de control como preventivo</p>
+                    </div>
+                    <div class="div13">
+                        <h3>@ViewBag.TotalControles</h3>
+                        <p>Número total de controles</p>
+                    </div>
         </main>
       </div>
+
+            <div class="view" style="display: none" id="informe">
+                <header>
+                    <h1 style="margin-bottom: 8px">Informe gerencial</h1>
+                    <p>Aqui encuentras la información gerencial especifica.</p>
+                </header>
+                <main class="informe-container parent">
+                    <div class="div40">
+                        <h3>@ViewBag.countProductos</h3>
+                        <p>Número de productos totales</p>
+                    </div>
+                    <div class="div50">
+                        <h3>@ViewBag.countEscaneos</h3>
+                        <p>Número de escaneos totales</p>
+                    </div>
+                    <div class="div60">
+                        <h3>@ViewBag.Rechazos</h3>
+                        <p>Número total de tipos de control como rechazo</p>
+                    </div>
+                    <div class="div30">
+                        <h3>@ViewBag.Preventivos</h3>
+                        <p>Número total de tipos de control como preventivo</p>
+                    </div>
+                    <div class="div20">
+                        <h3>@ViewBag.TotalControles</h3>
+                        <p>Número total de controles</p>
+                    </div>
+                    <div class="div70">
+                        <div class="card col-sm" style="width: 500px">
+                            <canvas id="graficaproduccioninforme"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="div80">
+                        <div>
+                            <h3>Productos por el pais de destino</h3>
+                        </div>
+                        <div>
+                            <table class="tablaPaisess">
+                                <tr>
+                                    <th>Pais</th>
+                                    @foreach (var item in paisesConRecuento)
+                                    {
+                                        <td>@item.PaisDestino</td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <th>Cantidad</th>
+                                    @foreach (var item in paisesConRecuento)
+                                    {
+                                        <td>@item.Cantidad</td>
+                                    }
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="div100">
+                        <div>
+                            <h3>Información de los escaneos</h3>
+                        </div>
+                        <div>
+                            <table class="tablaEscaneos">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre producto</th>
+                                        <th>Nombre usuario</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in ViewBag.Escaneos)
+                                    {
+                                        <tr>
+                                            <td>@item.Producto.Nombre</td>
+                                            <td>@item.Usuario.Nombre</td>
+                                            <td>@item.Fecha</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <div id="paginacionEscaneos" class="botons">
+                                <button id="btnAnterior" class="boton-anterior"><i class="fa-solid fa-arrow-left"></i> Anterior</button>
+                                <button id="btnSiguiente" class="boton-siguiente">Siguiente <i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div90">
+                        <div>
+                            <h3>Información de los controles</h3>
+                        </div>
+                        <div>
+                            <table class="tablaControl">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre producto</th>
+                                        <th>Línea</th>
+                                        <th>Cepa</th>
+                                        <th>País origen</th>
+                                        <th>País destino</th>
+                                        <th>Comentario</th>
+                                        <th>Tipo de control</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                      @foreach(var item in ViewBag.Controless) {
+                                          <tr>
+                                              <td>@item.Producto.Nombre</td>
+                                              <td>@item.Linea</td>
+                                              <td>@item.Cepa</td>
+                                              <td>@item.PaisOrigen</td>
+                                              <td>@item.PaisDestino</td>
+                                              <td>@item.Comentario</td>
+                                            <td>
+                                                @if (item.Tipodecontrol)
+                                                {
+                                                    <text>Rechazo</text>
+                                                }
+                                                else
+                                                {
+                                                    <text>Preventivo</text>
+                                                }
+                                            </td>
+                                          </tr>
+                                      }                    
+                                </tbody>
+                            </table>
+                            <div id="paginacionControles" class="botons">
+                                <button id="btnAnteriorControles" class="boton-anterior"><i class="fa-solid fa-arrow-left"></i> Anterior</button>
+                                <button id="btnSiguienteControles" class="boton-siguiente">Siguiente <i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+            </div>
 
       <div class="view" id="usuarios" style="display: none">
         <header>
           <h1>Adm. de Usuarios</h1>
           <p>
-            Aqui puedes adminstrar los usuario. Ver, crear, editar y borrar
-            usuarios como estimes necesario.
+                        Aqui puedes adminstrar los usuario. Ver, buscar (<i class="fa-solid fa-magnifying-glass" style="color: #ffffff"></i>), crear (<i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>), editar (<i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>), ver detalladamente la información (<i class="fa-solid fa-circle-info" style="color: #ffffff;"></i>) y borrar (<i class="fa-solid fa-trash" style="color: #ffffff;"></i>)
+            usuarios como estimes necesario con los iconos que salen más adelante.
           </p>
         </header>
 
@@ -217,8 +376,8 @@
         <header>
           <h1>Adm. de Productos</h1>
           <p>
-            Aqui puedes adminstrar los productos. Ver, buscar,crear, editar y
-            borrar productos como estimes necesario.
+                        Aqui puedes adminstrar los productos. Ver, buscar (<i class="fa-solid fa-magnifying-glass" style="color: #ffffff"></i>), crear (<i class="fa-solid fa-folder-plus" style="color: #ffffff"></i>), editar (<i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>), ver detalladamente la información (<i class="fa-solid fa-circle-info" style="color: #ffffff;"></i>) y borrar (<i class="fa-solid fa-trash" style="color: #ffffff;"></i>)
+                        productos como estimes necesario con los iconos que salen más adelante.
           </p>
         </header>
 
@@ -301,12 +460,112 @@
           </table>
         </main>
       </div>
+
+            <div class="view" id="controles" style="display: none">
+                <header>
+                    <h1>Adm. de Controles</h1>
+                    <p>
+                        Aqui puedes adminstrar los controles. Ver, buscar (<i class="fa-solid fa-magnifying-glass" style="color: #ffffff"></i>), crear (<i class="fa-solid fa-notes-medical"></i>), editar (<i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>), ver detalladamente la información (<i class="fa-solid fa-circle-info" style="color: #ffffff;"></i>) y borrar (<i class="fa-solid fa-trash" style="color: #ffffff;"></i>)
+                        controles como estimes necesario con los iconos que salen más adelante.
+                    </p>
+                </header>
+
+                <main class="productos-container">
+                    <div class="head-producto">
+                        <div class="busqueda">
+                            <form asp-action="Index" method="get" id="formularioBuscar">
+                                <button type="submit">
+                                    <i class="fa-solid fa-magnifying-glass" style="color: #ffffff"></i>
+                                </button>
+                                <input type="text" name="Busqueda" id="Busqueda" placeholder="Busqueda por Codigo o Nombre" />
+                            </form>
+                        </div>
+                        <div class="add">
+                            <a asp-action="CreateControl" asp-controller="Controles">
+                                <i class="fa-solid fa-notes-medical"></i>
+                                Agregar Control
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <table class="tableUsuarios">
+                        <thead>
+                            <tr>
+                                <th>Nombre producto</th>
+                                <th>Linea</th>
+                                <th>Cepa</th>
+                                <th>Pais origen</th>
+                                <th>Pais destino</th>
+                                <th>Comentario</th>
+                                <th>Tipo de control</th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.Controles)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @item.Producto.Nombre
+                                    </td>
+                                    <td>
+                                        @item.Linea
+                                    </td>
+                                    <td>
+                                        @item.Cepa
+                                    </td>
+                                    <td>
+                                        @item.PaisOrigen
+                                    </td>
+                                    <td>
+                                        @item.PaisDestino
+                                    </td>
+                                    <td>
+                                        @item.Comentario
+                                    </td>
+                                    <td>
+                                        @if (item.Tipodecontrol)
+                                        {
+                                            <text>Rechazo</text>
+                                        }
+                                        else
+                                        {
+                                            <text>Preventivo</text>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="Edit2" asp-controller="Controles" asp-route-id="@item.idControl">
+                                            <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+                                        </a>
+                                        |
+                                        <a asp-action="Details2" asp-controller="Controles" asp-route-id="@item.idControl">
+                                            <i class="fa-solid fa-circle-info" style="color: #ffffff;"></i>
+                                        </a>
+                                        |
+                                        <a asp-action="Delete2" asp-controller="Controles" asp-route-id="@item.idControl">
+                                            <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                                        </a>
+
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </main>
+
+            </div>
+
       <div class="view" id="busqueda" style="display: none">
         <header>
           <h1>Buscador/Scanner</h1>
           <p>
-            Aqui puedes buscar por nombre, codigo o escaneando el codigo de
-            barra del producto para ver su informacion.
+                        Aqui puedes buscar (<i class="fa-solid fa-magnifying-glass" style="color: #ffffff"></i>) por nombre, codigo o escaneando el codigo de
+                        barra (<i class="fa-solid fa-camera" style="color: #ffffff"></i>) del producto para ver su informacion y además ver detalladamente la informacion (<i class="fa-solid fa-circle-info" style="color: #ffffff;"></i>) con los iconos que salen más adelante.
           </p>
         </header>
 
@@ -331,13 +590,13 @@
           <table class="tableUsuarios">
             <thead>
               <tr>
-                <th>CodigoBarra</th>
+                <th>Codigo barra</th>
                 <th>Nombre</th>
                 <th>Cepa</th>
-                <th>PaisOrigen</th>
-                <th>PaisDestino</th>
-                <th>FechaCosecha</th>
-                <th>FechaProduccion</th>
+                <th>Pais origen</th>
+                <th>Pais destino</th>
+                <th>Fecha cosecha</th>
+                <th>Fecha produccion</th>
 
                 <th></th>
               </tr>
@@ -395,7 +654,7 @@
 
 <script src="~/js/quagga.min.js"></script>
 
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
 <script type="text/javascript">
   (function () {
@@ -459,6 +718,70 @@
 
     new Chart(graph2, config2);
   })();
+
+    (function () {
+        const labels20 = ["2022", "2023"];
+        const graph20 = document.querySelector("#graficaproduccioninforme");
+
+        const data20 = {
+            labels: labels20,
+            datasets: [
+                {
+                    label: "Produccion por año",
+                    data: [@ViewBag.produccionDosAnio, @ViewBag.produccionUnAnio],
+                    backgroundColor: ["#34baeb"],
+                },
+            ],
+        };
+
+        const config20 = {
+            type: "bar",
+            data: data20,
+            options: {
+                scales: {
+                    x: {
+                        grid: {
+                            color: "white",
+                            borderColor: "white",
+                        },
+                    },
+                    y: {
+                        grid: {
+                            color: "white",
+                            borderColor: "white",
+                        },
+                    },
+                },
+            },
+        };
+
+        new Chart(graph20, config20);
+    })();
+
+    $(document).ready(function () {
+        $('#btnAnterior').on('click', function () {
+            if (@ViewBag.PaginaActualEscaneos > 1) {
+                window.location.href = '@Url.Action("Index", "Administrador", new { paginaEscaneos = ViewBag.PaginaActualEscaneos - 1 })';
+            }
+        });
+
+        $('#btnSiguiente').on('click', function () {
+            window.location.href = '@Url.Action("Index", "Administrador", new { paginaEscaneos = ViewBag.PaginaActualEscaneos + 1 })';
+        });
+    });
+
+    $(document).ready(function () {
+        $('#btnAnteriorControles').on('click', function () {
+            if (@ViewBag.PaginaActualControles > 1) {
+                window.location.href = '@Url.Action("Index", "Administrador", new { paginaControles = ViewBag.PaginaActualControles - 1 })';
+            }
+        });
+
+        $('#btnSiguienteControles').on('click', function () {
+            window.location.href = '@Url.Action("Index", "Administrador", new { paginaControles = ViewBag.PaginaActualControles + 1 })';
+        });
+    });
+
 </script>
 <script src="~/js/admin.js"></script>
 
